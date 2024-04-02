@@ -5,7 +5,13 @@ import CustomButton from "../customComponents/CustomButton";
 import funnel from "../icons/funnel.png";
 import Table from "./WholesalerTable";
 import WholesalerTable from "./WholesalerTable";
+import AddModal from "./AddModal";
+import { useState } from "react";
+
 export default function WholeSaler() {
+  const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+
   return (
     <>
       <Box sx={{ marginTop: "128px", marginLeft: "63px" }}>
@@ -18,7 +24,11 @@ export default function WholeSaler() {
           Wholesalers
         </CustomTypo>
         <Box sx={{ marginLeft: "1281px", marginTop: "13px" }}>
-          <CustomButton width="82px" height="36px">
+          <CustomButton
+            width="82px"
+            height="36px"
+            onClick={() => setOpen(true)}
+          >
             Add
           </CustomButton>
           <Button
@@ -41,8 +51,9 @@ export default function WholeSaler() {
         <Divider
           sx={{ minWidth: "1566px", color: "#CACACA", marginTop: "26px" }}
         />
-      <WholesalerTable/>
+        <WholesalerTable />
       </Box>
+      <AddModal open={open} setOpen={setOpen} />
     </>
   );
 }

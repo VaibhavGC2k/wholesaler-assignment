@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import React from "react";
 
 export default function CustomTypo({
+  style,
   fontWeight,
   fontSize,
   color,
@@ -19,7 +20,8 @@ export default function CustomTypo({
           fontSize: fontSize,
           lineHeight: lineHeight,
           color: color,
-          fontFamily: `${fontFamily} !important`,
+          style,
+          fontFamily: `${fontFamily}`,
         }}
       >
         {children}

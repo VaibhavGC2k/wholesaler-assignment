@@ -8,51 +8,30 @@ export default function Design({ text1, text2, text3 }) {
     <>
       <Box
         sx={{
-          width: "950px",
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          minWidth: "50%",
+          minHeight: "1080px",
+          backgroundColor: "#F0EFFF",
           borderTopRightRadius: "70px",
           borderBottomRightRadius: "70px",
-          flexDirection: "column",
-          backgroundColor: "rgba(77, 71, 195, 0.1)",
         }}
       >
         <img
           src={SquadraIcon}
-          alt="squadra Icon"
-          style={{
-            width: "149px",
-          }}
+          alt="logo"
+          style={{ margin: "49px 629px 171px 172px" }}
         />
-        <Box sx={{ margin: "" }}>
-          <CustomTypo fontWeight="600" fontSize="64px">
-            {text1}
-          </CustomTypo>
-          <CustomTypo fontWeight="500" fontSize="36px">
-            squadra to use the app
-          </CustomTypo>
+        <Box sx={{marginLeft:"172px"}}>
+          <CustomTypo fontSize="64px" fontWeight="600" >{text1}</CustomTypo>
+          <CustomTypo fontSize="36px" fontWeight="500">{text2}</CustomTypo>
         </Box>
-        <Box sx={{ width: "316px" }}>
-          <CustomTypo fontWeight="400" fontSize="20px">
-            {text2}
-          </CustomTypo>
-          <CustomTypo fontWeight="400" fontSize="20px">
-            You can{" "}
-            <span style={{ fontWeight: "600", color: "rgba(77, 71, 195, 1)" }}>
-              {" "}
-              {text3} here !
-            </span>
-          </CustomTypo>
+        <Box sx={{marginLeft:"172px",marginTop:"52px"}}>
+        <CustomTypo fontSize="20px" fontWeight="400">{text3}</CustomTypo>
         </Box>
-        <Box>
-          <img
-            src={manStanding}
-            alt="squadra Icon"
-            style={{ width: "313px" }}
-          />
-        </Box>
+        <img
+          src={manStanding}
+          alt="man standing"
+          style={{ margin: "12px 60px 44px 577px" }}
+        />
       </Box>
     </>
   );

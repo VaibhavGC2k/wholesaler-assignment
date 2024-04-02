@@ -3,6 +3,7 @@ import React from "react";
 import CustomTypo from "./CustomTypo";
 
 export default function CustomButton({
+  onClick,
   padding,
   children,
   bgColor,
@@ -14,6 +15,7 @@ export default function CustomButton({
   return (
     <>
       <Button
+      onClick={onClick}
         sx={{
           backgroundColor: bgColor ? bgColor : "#4D47C3",
           borderRadius: "6px",

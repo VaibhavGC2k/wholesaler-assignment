@@ -11,7 +11,8 @@ export default function CustomTextField({ placeholder, children }) {
         }}
         InputProps={{
           style: {
-            borderRadius: "10px",
+            borderRadius: "6px",
+            borderColor:"#F0EFFF",
             width: "447px",
             height: "62px",
             backgroundColor: "#F0EFFF",

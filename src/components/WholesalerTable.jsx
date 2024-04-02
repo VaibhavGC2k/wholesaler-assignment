@@ -6,11 +6,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CustomTypo from "../customComponents/CustomTypo";
 import wholesalersData from "../data/wholesalers";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import editIcon from "../icons/Edit.png";
 import deleteIcon from "../icons/Delete.png";
+import { useState } from "react";
 
 export default function WholesalerTable() {
+
   return (
     <Table sx={{ marginTop: "36px", maxWidth: "1491px" }}>
       <TableHead>

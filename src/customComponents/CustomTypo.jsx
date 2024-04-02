@@ -6,6 +6,9 @@ export default function CustomTypo({
   fontSize,
   color,
   lineHeight,
+  fontFamily,
+  width,
+  height,
   children,
 }) {
   return (
@@ -16,6 +19,7 @@ export default function CustomTypo({
           fontSize: fontSize,
           lineHeight: lineHeight,
           color: color,
+          fontFamily: `${fontFamily} !important`,
         }}
       >
         {children}

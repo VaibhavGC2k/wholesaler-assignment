@@ -1,33 +1,50 @@
-import { AppBar, Box, Typography } from "@mui/material";
-
 import React from "react";
-import CustomTypo from "./CustomTypo";
-
-export default function Navbar({ title }) {
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import navLogo from "../icons/navLogo.png";
+import CustomTypo from "../customComponents/CustomTypo";
+export default function Navbar() {
   return (
     <>
-      <Box>
-        <AppBar
-          position="static"
-          sx={{
-            paddingLeft: "41px",
-            paddingTop: "33px",
-            paddingBottom: "34px",
-            minWidth: "115px",
-            backgroundColor: "#F0EFFF",
-            borderBottom: "40px solid black",
-          }}
-        >
-          <CustomTypo
-            fontWeight="600"
-            fontSize="32px"
-            color="#000000"
-            lineHeight="48px"
+      <AppBar
+        position="fixed"
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: "#F1F0FA",
+         
+          height: "90px",
+          width: "100%",
+        }}
+      >
+        <Toolbar sx={{ paddingLeft: "0px !important",paddingRight:"0px  !important"}}>
+          <Box
+            sx={{
+              width: "149px",
+              height: "42px",
+              display: "flex",
+              alignItems: "center",
+              margin: "24px 0px 24px 36px",
+            }}
           >
-            {title}
-          </CustomTypo>
-        </AppBar>
-      </Box>
+            <img
+              src={navLogo}
+              alt="Squadron logo"
+              width="40px"
+              height="42px"
+              style={{ marginRight: "10px" }}
+            />
+            <CustomTypo
+              fontFamily="Prompt"
+              fontWeight="600"
+              fontSize="24px"
+              color="#000000"
+            >
+              Squadra
+            </CustomTypo>
+          </Box>
+        </Toolbar>
+      </AppBar>
     </>
   );
 }

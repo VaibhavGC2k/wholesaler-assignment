@@ -15,6 +15,8 @@ export default function CustomTextField({ placeholder, children }) {
             width: "447px",
             height: "62px",
             backgroundColor: "#F0EFFF",
+            marginTop: "38px",
+            fontFamily: "Poppins !important",
           },
         }}
       >

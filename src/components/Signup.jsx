@@ -1,15 +1,22 @@
 import React from "react";
-import CustomTypo from "./CustomTypo";
+import CustomTypo from "../customComponents/CustomTypo";
 import { Box, Button, Checkbox, Typography } from "@mui/material";
 import facebookIcon from "../icons/Facebook.svg";
 import appleIcon from "../icons/apple.svg";
 import googleIcon from "../icons/google.svg";
-import CustomTextField from "./CustomTextField";
+import CustomTextField from "../customComponents/CustomTextField";
 
 export default function Signup() {
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column", maxWidth: "447px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "447px",
+          gap: "2",
+        }}
+      >
         <CustomTypo
           fontWeight="500"
           fontSize="32px"
@@ -30,7 +37,7 @@ export default function Signup() {
             display: "flex",
             alignItems: "center", // Align items vertically center
             marginBottom: "20px",
-            marginLeft: "-10px",
+            marginLeft: "10px",
           }}
         >
           <Checkbox />
@@ -52,29 +59,51 @@ export default function Signup() {
             borderRadius: "5px",
             backgroundColor: "#4D47C3",
             minHeight: "59px",
+            textTransform: "capitalize",
           }}
         >
-          Register
+          <CustomTypo
+            fontWeight="500"
+            fontSize="16px"
+            lineHeight="24px"
+            color="#FFFFFF"
+          >
+            Register
+          </CustomTypo>
         </Button>
-        <CustomTypo
-          fontWeight="500"
-          fontSize="16px"
-          lineHeight="24px"
-          color="#B5B5B5"
-        >
-          or continue with
-        </CustomTypo>
         <Box
           sx={{
-            maxWidth: "165px",
-            minHeight: "43.12px",
             display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            textAlign: "center",
           }}
         >
-          <img src={facebookIcon} alt="Facebook Icon" />
-          <img src={appleIcon} alt="Apple Icon" />
-          <img src={googleIcon} alt="Google Icon" />
+          <CustomTypo
+            fontWeight="500"
+            fontSize="16px"
+            lineHeight="24px"
+            color="#B5B5B5"
+            sx={{ marginBottom: "48px" }}
+          >
+            Or continue with
+          </CustomTypo>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "165px",
+              "& img": {
+                marginBottom: "0px", // Adjust as needed
+              },
+            }}
+          >
+            <img src={facebookIcon} alt="Facebook Icon" />
+            <img src={appleIcon} alt="Apple Icon" />
+            <img src={googleIcon} alt="Google Icon" />
+          </Box>
         </Box>
       </Box>
     </>

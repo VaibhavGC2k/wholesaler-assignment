@@ -5,12 +5,14 @@ import CustomButton from "../customComponents/CustomButton";
 import funnel from "../icons/funnel.png";
 import Table from "./WholesalerTable";
 import WholesalerTable from "./WholesalerTable";
-import AddModal from "./AddModal";
+import AddModal from "../Modals/AddModal";
+import DeleteModal from "../Modals/DeleteModal";
 import { useState } from "react";
+import FilterModal from "../Modals/FilterModal";
 
 export default function WholeSaler() {
   const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
+  const [openFilter, setOpenFilter] = useState(false);
 
   return (
     <>
@@ -32,6 +34,9 @@ export default function WholeSaler() {
             Add
           </CustomButton>
           <Button
+            onClick={() => {
+              setOpenFilter(true);
+            }}
             sx={{
               maxWidth: "124px",
               maxHeight: "36px",
@@ -49,11 +54,17 @@ export default function WholeSaler() {
           </Button>
         </Box>
         <Divider
-          sx={{ minWidth: "1566px", color: "#CACACA", marginTop: "26px" }}
+          sx={{
+            minWidth: "1566px",
+            color: "#CACACA",
+            marginTop: "26px",
+            marginLeft: "-27px",
+          }}
         />
         <WholesalerTable />
       </Box>
       <AddModal open={open} setOpen={setOpen} />
+      <FilterModal openFilter={openFilter} setOpenFilter={setOpenFilter} />
     </>
   );
 }

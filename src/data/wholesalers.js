@@ -40,20 +40,6 @@ const wholesalers = [
     email: "david.martinez@example.com",
     phoneNumber: "5552345678",
     wholesalerId: "FT2345",
-  },
-  {
-    firstName: "Emily",
-    lastName: "Garcia",
-    email: "emily.garcia@example.com",
-    phoneNumber: "5558765432",
-    wholesalerId: "FT6789",
-  },
-  {
-    firstName: "Daniel",
-    lastName: "Rodriguez",
-    email: "daniel.rodriguez@example.com",
-    phoneNumber: "5553456789",
-    wholesalerId: "FT0123",
   }
 ];
 

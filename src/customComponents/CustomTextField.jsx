@@ -1,7 +1,13 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-export default function CustomTextField({ placeholder, children }) {
+export default function CustomTextField({
+  placeholder,
+  children,
+  width,
+  height,
+  margin,
+}) {
   return (
     <>
       <TextField
@@ -12,11 +18,11 @@ export default function CustomTextField({ placeholder, children }) {
         InputProps={{
           style: {
             borderRadius: "6px",
-            borderColor:"#F0EFFF",
-            width: "447px",
-            height: "62px",
+            borderColor: "#F0EFFF",
+            width: width ? width : "447px",
+            height: height ? height : "62px",
             backgroundColor: "#F0EFFF",
-            marginTop: "38px",
+            margin: margin ? margin : "",
             fontFamily: "Poppins !important",
           },
         }}

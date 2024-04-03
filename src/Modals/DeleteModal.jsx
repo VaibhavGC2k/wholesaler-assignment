@@ -7,6 +7,7 @@ import modalClose from "../icons/modalClose.svg";
 import { Divider, Grid } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
+import { DragHandleRounded } from "@mui/icons-material";
 const style = {
   position: "absolute",
   top: "50%",
@@ -18,8 +19,18 @@ const style = {
   borderRadius: "17px",
 };
 
-export default function DeleteModal({ openDelete, setOpenDelete }) {
+export default function DeleteModal({
+  openDelete,
+  setOpenDelete,
+  id,
+  setData,
+  data,
+}) {
   const handleClose = () => setOpenDelete(false);
+  const handleDelete = () => {
+    setData(data.filter((obj) => obj.wholesalerId !== id));
+    handleClose();
+  };
   return (
     <>
       <Modal
@@ -85,7 +96,11 @@ export default function DeleteModal({ openDelete, setOpenDelete }) {
             >
               Cancel
             </CustomButton>
-            <CustomButton maxWidth="160px" maxHeight="44px">
+            <CustomButton
+              maxWidth="160px"
+              maxHeight="44px"
+              onClick={handleDelete}
+            >
               Yes Delete!
             </CustomButton>
           </Box>

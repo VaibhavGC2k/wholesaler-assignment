@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import CustomTypo from "../customComponents/CustomTypo";
 import modalClose from "../icons/modalClose.svg";
-import { Divider, Grid } from "@mui/material";
+import { Divider, Grid, MenuItem, Select } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
+import { useState } from "react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -18,8 +19,35 @@ const style = {
   borderRadius: "6px",
 };
 
-export default function EditModal({ openEdit, setOpenEdit }) {
+export default function EditModal({
+  openEdit,
+  setOpenEdit,
+  id,
+  setData: setWholeData,
+  data: wholeData,
+}) {
   const handleClose = () => setOpenEdit(false);
+  const [formData, setFormData] = useState({});
+  const [data, setData] = useState(
+    wholeData.find((obj) => obj.wholesalerId == id)
+  );
+  console.log(data);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setWholeData({
+      ...formData,
+      [name]: value,
+    });
+    console.log(formData);
+  };
+
+  const handleFormSubmit = () => {
+    // setData([...data, formData]);
+    handleClose();
+    
+  };
+
   return (
     <>
       <Modal
@@ -73,21 +101,94 @@ export default function EditModal({ openEdit, setOpenEdit }) {
             >
               {Array.from(Array(7)).map((_, index) => (
                 <Grid item xs={2} sm={4} md={4} key={index}>
-          
-                  <CustomTypo
-                    fontFamily="Poppins"
-                    fontWeight="400"
-                    fontSize="14px"
-                    color="#636363"
-                  >
-                    First Name
-                  </CustomTypo>
-                  <CustomTextField border="0px" />
+                  {index < 5 ? (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        {index === 0 && "First Name"}
+                        {index === 1 && "Last Name"}
+                        {index === 2 && "Email "}
+                        {index === 3 && "Phone Number"}
+                        {index === 4 && "Wholesaler ID"}
+                      </CustomTypo>
+                      <CustomTextField
+                      onChange={handleChange}
+                        border="0px"
+                        defaultValue={
+                          (index === 0 && data["firstName"]) ||
+                          (index === 1 && data["lastName"]) ||
+                          (index === 2 && data["email"]) ||
+                          (index === 3 && data["phoneNumber"]) ||
+                          (index === 4 && data["wholesalerId"])
+                        }
+                      />
+                    </>
+                  ) : index === 5 ? (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        Role
+                      </CustomTypo>
+
+                      <Select
+                        defaultValue={data["Role"]}
+                        onChange={handleChange}
+                        name="Role"
+                        variant="outlined"
+                        style={{
+                          marginTop: "8px",
+                          width: "447px",
+                          height: "62px",
+                          backgroundColor: "#F0EFFF",
+                          borderColor: "#F0EFFF",
+                          borderRadius: "6px",
+                        }}
+                      >
+                        <MenuItem value="SUPER_ADMIN">SUPER_ADMIN</MenuItem>
+                        <MenuItem value="ADMIN">ADMIN</MenuItem>
+                        <MenuItem value="DEVELOPER">DEVELOPER</MenuItem>
+                        <MenuItem value="MANAGER">MANAGER</MenuItem>
+                        <MenuItem value="TESTER">TESTER</MenuItem>
+                      </Select>
+                    </>
+                  ) : (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        {index === 6 && "LocId"}
+                      </CustomTypo>
+                      <CustomTextField
+                      onChange={handleChange}
+                        border="0px"
+                        defaultValue={data["LocId"]}
+                      />
+                    </>
+                  )}
                 </Grid>
               ))}
             </Grid>
           </Box>
-          <CustomButton padding="14px, 60px, 14px, 61px" margin="40px 0px 58px 40px" width="158px" height="46px">Update</CustomButton>
+          <CustomButton
+          onClick={handleFormSubmit}
+            padding="14px, 60px, 14px, 61px"
+            margin="40px 0px 58px 40px"
+            width="158px"
+            height="46px"
+          >
+            Update
+          </CustomButton>
         </Box>
       </Modal>
     </>

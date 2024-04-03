@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import CustomTypo from "../customComponents/CustomTypo";
 import modalClose from "../icons/modalClose.svg";
-import { Divider, Grid } from "@mui/material";
+import { Divider } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
 const style = {
@@ -20,6 +20,21 @@ const style = {
 
 export default function FilterModal({ openFilter, setOpenFilter }) {
   const handleClose = () => setOpenFilter(false);
+  const [formData, setFormData] = React.useState({});
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = () => {
+    // Access formData here and perform necessary actions
+    console.log(formData);
+    // Example: You can pass formData to a parent component via a function prop
+  };
   return (
     <>
       <Modal
@@ -55,7 +70,12 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
                 alignItems: "center",
               }}
             >
-              <CustomButton variant="outlined" color="#4D47C3" bgColor="none">
+              <CustomButton
+                onClick={() => setFormData({})}
+                variant="outlined"
+                color="#4D47C3"
+                bgColor="none"
+              >
                 Clear Filter
               </CustomButton>
 
@@ -85,7 +105,6 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               justifyContent: "flex-start",
               marginTop: "14px",
               marginLeft: "28px",
-              //   marginRight: "27px",
               columnGap: "27px",
               rowGap: "23px",
             }}
@@ -100,7 +119,12 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               >
                 First Name
               </CustomTypo>
-              <CustomTextField width="377px" height="48px" />
+              <CustomTextField
+                onChange={handleChange}
+                name="firstName"
+                width="377px"
+                height="48px"
+              />
             </Box>
             <Box sx={{}}>
               {" "}
@@ -112,7 +136,13 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               >
                 Last Name
               </CustomTypo>
-              <CustomTextField width="377px" height="48px" />
+              <CustomTextField
+              defaultValue={formData.lastName}
+                name="lastName"
+                onChange={handleChange}
+                width="377px"
+                height="48px"
+              />
             </Box>
             <Box sx={{}}>
               {" "}
@@ -124,7 +154,12 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               >
                 Email ID
               </CustomTypo>
-              <CustomTextField width="377px" height="48px" />
+              <CustomTextField
+                name="email"
+                onChange={handleChange}
+                width="377px"
+                height="48px"
+              />
             </Box>
             <Box sx={{}}>
               {" "}
@@ -136,7 +171,12 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               >
                 Phone Number
               </CustomTypo>
-              <CustomTextField width="377px" height="48px" />
+              <CustomTextField
+                name="phoneNumber"
+                onChange={handleChange}
+                width="377px"
+                height="48px"
+              />
             </Box>
             <Box sx={{}}>
               {" "}
@@ -148,11 +188,17 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               >
                 Wholesaler ID
               </CustomTypo>
-              <CustomTextField width="377px" height="48px" />
+              <CustomTextField
+                name="wholesalerId"
+                onChange={handleChange}
+                width="377px"
+                height="48px"
+              />
             </Box>
           </Box>
 
           <CustomButton
+            onClick={handleSubmit}
             padding="14px, 60px, 14px, 61px"
             margin="40px 0px 58px 40px"
             width="158px"

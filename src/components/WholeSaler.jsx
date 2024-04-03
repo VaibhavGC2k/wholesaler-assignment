@@ -3,7 +3,6 @@ import React from "react";
 import CustomTypo from "../customComponents/CustomTypo";
 import CustomButton from "../customComponents/CustomButton";
 import funnel from "../icons/funnel.png";
-import Table from "./WholesalerTable";
 import WholesalerTable from "./WholesalerTable";
 import AddModal from "../Modals/AddModal";
 import { useState } from "react";
@@ -17,6 +16,8 @@ export default function WholeSaler() {
   const handleChange = (event, value) => {
     setPageNo(value);
   };
+  const [data, setData] = useState(wholesalers);
+  console.log("data", data);
 
   return (
     <>
@@ -66,7 +67,7 @@ export default function WholeSaler() {
             marginTop: "26px",
           }}
         />
-        <WholesalerTable pageNo={pageNo} />
+        <WholesalerTable pageNo={pageNo} data={data} setData={setData} />
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <Box
             sx={{
@@ -85,21 +86,33 @@ export default function WholeSaler() {
             >
               Page : {pageNo}
             </CustomTypo>
-            <Box>
+            <Box sx={{ marginLeft: "539px" }}>
               <Stack>
                 <Pagination
-                  count={Math.ceil(wholesalers.length / 6)}
+                  count={Math.ceil(data.length / 6)}
                   variant="outlined"
                   color="primary"
                   onChange={handleChange}
+                  sx={{
+                    "& .MuiPaginationItem-root:first-of-type": {
+                      color: "red",
+                    },
+                    "& .MuiPaginationItem-root:last-of-type": {
+                      color: "blue",
+                    },
+                  }}
                 />
               </Stack>
             </Box>
           </Box>
         </Box>
       </Box>
-      <AddModal open={open} setOpen={setOpen} />
-      <FilterModal openFilter={openFilter} setOpenFilter={setOpenFilter} />
+      <AddModal open={open} setOpen={setOpen} setData={setData} data={data} />
+      <FilterModal
+        openFilter={openFilter}
+        setOpenFilter={setOpenFilter}
+        setData={setData}
+      />
     </>
   );
 }

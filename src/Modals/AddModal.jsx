@@ -1,13 +1,14 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-import CustomTypo from "../customComponents/CustomTypo";
+import React, { useState } from "react";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import modalClose from "../icons/modalClose.svg";
-import { Divider, Grid, MenuItem, Select, TextField } from "@mui/material";
-import CustomTextField from "../customComponents/CustomTextField";
+import CustomTypo from "../customComponents/CustomTypo";
+import { Modal, Box, Button, Divider } from "@mui/material";
+import PositionedSnackbar from "../components/Snackbar";
 import CustomButton from "../customComponents/CustomButton";
-import { useState } from "react";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -19,32 +20,44 @@ const style = {
   borderRadius: "6px",
 };
 
-export default function AddModal({ open, setOpen }) {
+export default function AddModal({ open, setOpen, setData, data }) {
   const handleClose = () => setOpen(false);
+
   const [selectedValue, setSelectedValue] = useState();
-  const formsData = new FormData();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    wholesalerId: "",
-    role: "",
-    locId: "",
-  });
-  const handleChange = (event) => {
+  const [snackbarMessage, setSnackbarMessage] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [emailError, setEmailError] = useState(false); 
+
+ const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-    console.log(formsData);
+
+    // Validate email
+    if (name === "email") {
+      const isValidEmail = validateEmail(value);
+      setEmailError(!isValidEmail);
+    }
   };
+
   const handleFormSubmit = () => {
-    console.log(formsData.get());
-    // setFormData({
-    //   ...formData,
-    // });
+    // Check if there's an email error
+    if (emailError) {
+      // Don't proceed if email is invalid
+      return;
+    }
+
+    setData([...data, formData]);
+    handleClose();
+    setSnackbarMessage(true);
+  };
+
+  // Regular expression to validate email
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
   };
   return (
     <>
@@ -97,103 +110,109 @@ export default function AddModal({ open, setOpen }) {
               spacing={{ xs: 1, md: 2 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <form onSubmit={handleFormSubmit}>
-                {Array.from(Array(7)).map((_, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index}>
-                    {index < 5 ? (
-                      <>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="400"
-                          fontSize="14px"
-                          color="#636363"
-                        >
-                          {index === 0 && "First Name"}
-                          {index === 1 && "Last Name"}
-                          {index === 2 && "Email ID"}
-                          {index === 3 && "Phone Number"}
-                          {index === 4 && "Wholesaler ID"}
-                        </CustomTypo>
-                        <TextField
-                          onChange={handleChange}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          InputProps={{
-                            style: {
-                              borderRadius: "6px",
-                              borderColor: "#F0EFFF",
-                              width: "447px",
-                              height: "62px",
-                              backgroundColor: "#F0EFFF",
-                              fontFamily: "Poppins !important",
-                            },
-                          }}
-                        />
-                      </>
-                    ) : index === 5 ? (
-                      <>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="400"
-                          fontSize="14px"
-                          color="#636363"
-                        >
-                          Role
-                        </CustomTypo>
-
-                        <Select
-                          value={selectedValue}
-                          onChange={handleChange}
-                          name="Role"
-                          variant="outlined"
-                          style={{
-                            marginTop: "8px",
+              {Array.from(Array(7)).map((_, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  {index < 5 ? (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        {index === 0 && "first Name"}
+                        {index === 1 && "Last Name"}
+                        {index === 2 && "Email "}
+                        {index === 3 && "Phone Number"}
+                        {index === 4 && "Wholesaler ID"}
+                      </CustomTypo>
+                      <TextField
+                        name={
+                          (index === 0 && "firstName") ||
+                          (index === 1 && "lastName") ||
+                          (index === 2 && "email") ||
+                          (index === 3 && "phoneNumber") ||
+                          (index === 4 && "wholesalerId")
+                        }
+                        onChange={handleChange}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        InputProps={{
+                          style: {
+                            borderRadius: "6px",
+                            borderColor: "#F0EFFF",
                             width: "447px",
                             height: "62px",
                             backgroundColor: "#F0EFFF",
-                            borderColor: "#F0EFFF",
+                            fontFamily: "Poppins !important",
+                          },
+                        }}
+                      />
+                    </>
+                  ) : index === 5 ? (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        Role
+                      </CustomTypo>
+
+                      <Select
+                        value={selectedValue}
+                        onChange={handleChange}
+                        name="Role"
+                        variant="outlined"
+                        style={{
+                          marginTop: "8px",
+                          width: "447px",
+                          height: "62px",
+                          backgroundColor: "#F0EFFF",
+                          borderColor: "#F0EFFF",
+                          borderRadius: "6px",
+                        }}
+                      >
+                        <MenuItem value="SUPER_ADMIN">SUPER_ADMIN</MenuItem>
+                        <MenuItem value="ADMIN">ADMIN</MenuItem>
+                        <MenuItem value="DEVELOPER">DEVELOPER</MenuItem>
+                        <MenuItem value="MANAGER">MANAGER</MenuItem>
+                        <MenuItem value="TESTER">TESTER</MenuItem>
+                      </Select>
+                    </>
+                  ) : (
+                    <>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="400"
+                        fontSize="14px"
+                        color="#636363"
+                      >
+                        {index === 6 && "LocId"}
+                      </CustomTypo>
+                      <TextField
+                        name="LocId"
+                        onChange={handleChange}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        InputProps={{
+                          style: {
                             borderRadius: "6px",
-                          }}
-                        >
-                          <MenuItem value="SUPER_ADMIN">SUPER_ADMIN</MenuItem>
-                          <MenuItem value="ADMIN">ADMIN</MenuItem>
-                          <MenuItem value="DEVELOPER">DEVELOPER</MenuItem>
-                          <MenuItem value="MANAGER">MANAGER</MenuItem>
-                          <MenuItem value="TESTER">TESTER</MenuItem>
-                        </Select>
-                      </>
-                    ) : (
-                      <>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="400"
-                          fontSize="14px"
-                          color="#636363"
-                        >
-                          {index === 6 && "LocId"}
-                        </CustomTypo>
-                        <TextField
-                          onChange={handleChange}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          InputProps={{
-                            style: {
-                              borderRadius: "6px",
-                              borderColor: "#F0EFFF",
-                              width: "447px",
-                              height: "62px",
-                              backgroundColor: "#F0EFFF",
-                              fontFamily: "Poppins !important",
-                            },
-                          }}
-                        />
-                      </>
-                    )}
-                  </Grid>
-                ))}
-              </form>
+                            borderColor: "#F0EFFF",
+                            width: "447px",
+                            height: "62px",
+                            backgroundColor: "#F0EFFF",
+                            fontFamily: "Poppins !important",
+                          },
+                        }}
+                      />
+                    </>
+                  )}
+                </Grid>
+              ))}
             </Grid>
           </Box>
           <CustomButton
@@ -207,6 +226,7 @@ export default function AddModal({ open, setOpen }) {
           </CustomButton>
         </Box>
       </Modal>
+      <PositionedSnackbar snackbarOpen={snackbarMessage} />
     </>
   );
 }

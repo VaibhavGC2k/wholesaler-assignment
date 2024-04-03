@@ -3,7 +3,8 @@ import React from "react";
 import SquadraIcon from "../icons/SquadraLogo.svg";
 import CustomTypo from "../customComponents/CustomTypo";
 import manStanding from "../icons/manStanding.svg";
-export default function Design({ text1, text2, text3 }) {
+import { Link } from "react-router-dom";
+export default function Design({ text1, text2, text3, link }) {
   return (
     <>
       <Box
@@ -20,12 +21,29 @@ export default function Design({ text1, text2, text3 }) {
           alt="logo"
           style={{ margin: "49px 629px 171px 172px" }}
         />
-        <Box sx={{marginLeft:"172px"}}>
-          <CustomTypo fontSize="64px" fontWeight="600" >{text1}</CustomTypo>
-          <CustomTypo fontSize="36px" fontWeight="500">{text2}</CustomTypo>
+        <Box sx={{ marginLeft: "172px" }}>
+          <CustomTypo fontSize="64px" fontWeight="600" fontFamily="Poppins">
+            {text1}
+          </CustomTypo>
+          <CustomTypo fontSize="36px" fontWeight="500" fontFamily="Poppins">
+            {text2}
+          </CustomTypo>
         </Box>
-        <Box sx={{marginLeft:"172px",marginTop:"52px"}}>
-        <CustomTypo fontSize="20px" fontWeight="400">{text3}</CustomTypo>
+        <Box sx={{ marginLeft: "172px", marginTop: "52px" }}>
+          <CustomTypo fontSize="20px" fontWeight="400" fontFamily="Poppins">
+            If you already have an account
+          </CustomTypo>
+        </Box>
+        <Box sx={{ marginLeft: "172px", marginTop: "10px" }}>
+          <CustomTypo fontSize="20px" fontWeight="400" fontFamily="Poppins">
+            you can{" "}
+            <Link
+              to={link}
+              style={{ textDecoration: "none", color: "#4D47C3" }}
+            >
+              {text3}
+            </Link>
+          </CustomTypo>
         </Box>
         <img
           src={manStanding}

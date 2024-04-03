@@ -7,16 +7,16 @@ import Signup from "./Signup";
 function SignupScreen() {
   return (
     <>
-     
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box sx={{ width: "50%" }}>
           <Design
             text1="Sign Up to"
-            text2="If you already have an account"
-            text3="Login"
+            text2="squadra to explore the app"
+            text3="Login Here !"
+            link="/login"
           />
         </Box>
-        <Box sx={{backgroundColor:"yellow"}}>
+        <Box sx={{ margin:"102px 262px 43.88px 261px" }}>
           <Signup />
         </Box>
       </Box>

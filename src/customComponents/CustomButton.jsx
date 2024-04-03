@@ -23,7 +23,7 @@ export default function CustomButton({
           borderRadius: "6px",
           padding: padding ? padding : "9px, 25px, 9px, 25px",
           maxWidth: width,
-          maxHeight: height,
+          maxHeight: height ? height : "",
           gap: "10px",
           color: color ? color : "#FFFFFF",
           margin: margin ? margin : "",

@@ -17,7 +17,8 @@ export default function LoginScreen() {
         <Design
           text1="Sign in to squadra to use the app"
           text2="If you don’t have an account register"
-          text3="Register"
+          text3="Register here !"
+          link="/signup"
         />
 
         <SignIn />

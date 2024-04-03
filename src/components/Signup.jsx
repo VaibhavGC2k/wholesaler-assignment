@@ -13,15 +13,15 @@ export default function Signup() {
         sx={{
           display: "flex",
           flexDirection: "column",
+          height: "700px",
           maxWidth: "447px",
-          gap: "2",
+          rowGap: "38px",
         }}
       >
         <CustomTypo
           fontWeight="500"
           fontSize="32px"
-          // marginBottom: "25px"
-          lineHeight="48px"
+          fontFamily="Poppins"
           color="#000000"
         >
           Sign Up
@@ -36,17 +36,12 @@ export default function Signup() {
           sx={{
             display: "flex",
             alignItems: "center", // Align items vertically center
-            marginBottom: "20px",
+
             marginLeft: "10px",
           }}
         >
           <Checkbox />
-          <CustomTypo
-            fontWeight="500"
-            fontSize="16px"
-            lineHeight="24px"
-            color="#B5B5B5"
-          >
+          <CustomTypo fontWeight="500" fontSize="16px" color="#B5B5B5">
             I accept the{" "}
             <a href="" style={{ color: "#3E7ADE", textDecoration: "none" }}>
               terms and conditions
@@ -85,7 +80,7 @@ export default function Signup() {
             fontSize="16px"
             lineHeight="24px"
             color="#B5B5B5"
-            sx={{ marginBottom: "48px" }}
+            // sx={{ marginBottom: "48px" }}
           >
             Or continue with
           </CustomTypo>
@@ -96,7 +91,7 @@ export default function Signup() {
               alignItems: "center",
               width: "165px",
               "& img": {
-                marginBottom: "0px", // Adjust as needed
+                marginTop: "48px", // Adjust as needed
               },
             }}
           >

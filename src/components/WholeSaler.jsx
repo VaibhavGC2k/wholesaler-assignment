@@ -1,4 +1,4 @@
-import { Box, Button, Divider } from "@mui/material";
+import { Box, Button, Divider, Pagination, Stack } from "@mui/material";
 import React from "react";
 import CustomTypo from "../customComponents/CustomTypo";
 import CustomButton from "../customComponents/CustomButton";
@@ -6,25 +6,31 @@ import funnel from "../icons/funnel.png";
 import Table from "./WholesalerTable";
 import WholesalerTable from "./WholesalerTable";
 import AddModal from "../Modals/AddModal";
-import DeleteModal from "../Modals/DeleteModal";
 import { useState } from "react";
 import FilterModal from "../Modals/FilterModal";
+import wholesalers from "../data/wholesalers";
 
 export default function WholeSaler() {
+  const [pageNo, setPageNo] = useState(1);
   const [open, setOpen] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
+  const handleChange = (event, value) => {
+    setPageNo(value);
+  };
 
   return (
     <>
-      <Box sx={{ marginTop: "128px", marginLeft: "63px" }}>
-        <CustomTypo
-          fontWeight="600"
-          fontSize="20px"
-          color="#4D47C3"
-          fontFamily="Montserrat"
-        >
-          Wholesalers
-        </CustomTypo>
+      <Box sx={{ marginTop: "128px", marginLeft: "33px" }}>
+        <Box sx={{ marginLeft: "30px" }}>
+          <CustomTypo
+            fontWeight="600"
+            fontSize="20px"
+            color="#4D47C3"
+            fontFamily="Montserrat"
+          >
+            Wholesalers
+          </CustomTypo>
+        </Box>
         <Box sx={{ marginLeft: "1281px", marginTop: "13px" }}>
           <CustomButton
             width="82px"
@@ -58,10 +64,39 @@ export default function WholeSaler() {
             minWidth: "1566px",
             color: "#CACACA",
             marginTop: "26px",
-            marginLeft: "-27px",
           }}
         />
-        <WholesalerTable />
+        <WholesalerTable pageNo={pageNo} />
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <Box
+            sx={{
+              marginTop: "265px",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+            }}
+          >
+            <CustomTypo
+              fontFamily="Poppins"
+              fontWeight="400px"
+              fontSize="14px"
+              color="#696969"
+            >
+              Page : {pageNo}
+            </CustomTypo>
+            <Box>
+              <Stack>
+                <Pagination
+                  count={Math.ceil(wholesalers.length / 6)}
+                  variant="outlined"
+                  color="primary"
+                  onChange={handleChange}
+                />
+              </Stack>
+            </Box>
+          </Box>
+        </Box>
       </Box>
       <AddModal open={open} setOpen={setOpen} />
       <FilterModal openFilter={openFilter} setOpenFilter={setOpenFilter} />

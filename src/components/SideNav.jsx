@@ -108,7 +108,7 @@ export default function SideNav() {
             </List>
           </Box>
         </Drawer>
-        <WholeSaler/>
+        <WholeSaler />
       </Box>
     </>
   );

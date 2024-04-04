@@ -35,17 +35,13 @@ export default function EditModal({
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setWholeData({
-      ...formData,
-      [name]: value,
-    });
-    console.log(formData);
+   
   };
 
   const handleFormSubmit = () => {
-    // setData([...data, formData]);
+    setData([...wholeData, formData]);
+    console.log(formData)
     handleClose();
-    
   };
 
   return (

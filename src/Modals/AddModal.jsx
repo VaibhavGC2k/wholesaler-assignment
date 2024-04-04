@@ -26,9 +26,11 @@ export default function AddModal({ open, setOpen, setData, data }) {
   const [selectedValue, setSelectedValue] = useState();
   const [snackbarMessage, setSnackbarMessage] = useState(false);
   const [formData, setFormData] = useState({});
-  const [emailError, setEmailError] = useState(false); 
+  const [emailError, setEmailError] = useState(false);
+  const [wholesalerIdError, setWholesalerIdError] = useState(false);
+  const [LocIdError, setLocIdError] = useState(false);
 
- const handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
@@ -39,26 +41,41 @@ export default function AddModal({ open, setOpen, setData, data }) {
     if (name === "email") {
       const isValidEmail = validateEmail(value);
       setEmailError(!isValidEmail);
+    } else if (name === "wholesalerId") {
+      const isValidateWholesalerId = validateWholesalerId(value);
+      setWholesalerIdError(!isValidateWholesalerId);
+    } else if (name === "LocId") {
+      const isLocId = validateLocId(value);
+      setLocIdError(!isLocId);
     }
   };
 
   const handleFormSubmit = () => {
-    // Check if there's an email error
-    if (emailError) {
-      // Don't proceed if email is invalid
+    if (emailError || wholesalerIdError || LocIdError) {
+      console.log("error");
       return;
     }
-
     setData([...data, formData]);
     handleClose();
     setSnackbarMessage(true);
   };
 
-  // Regular expression to validate email
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
+
+  const validateWholesalerId = (wholesalerId) => {
+    const re = /^[A-Za-z]{3}\d{3}$/;
+    return re.test(wholesalerId);
+  };
+  
+  const validateLocId = (locId) => {
+    const re = /^[A-Za-z]{2}\d{6}$/;
+    return re.test(locId);
+  };
+
+
   return (
     <>
       <Modal
@@ -134,6 +151,18 @@ export default function AddModal({ open, setOpen, setData, data }) {
                           (index === 3 && "phoneNumber") ||
                           (index === 4 && "wholesalerId")
                         }
+                        error={
+                          (index === 2 && emailError) ||
+                          (index === 4 && wholesalerIdError)
+                        }
+                        helperText={
+                          (index === 2 &&
+                            emailError &&
+                            "Enter valid Email Id") ||
+                          (index === 4 &&
+                            wholesalerIdError &&
+                            "Enter valid Wholesaler Id")
+                        }
                         onChange={handleChange}
                         InputLabelProps={{
                           shrink: true,
@@ -193,6 +222,8 @@ export default function AddModal({ open, setOpen, setData, data }) {
                         {index === 6 && "LocId"}
                       </CustomTypo>
                       <TextField
+                        error={LocIdError}
+                        helperText={LocIdError && "Enter valid Loc ID"}
                         name="LocId"
                         onChange={handleChange}
                         InputLabelProps={{
@@ -226,7 +257,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
           </CustomButton>
         </Box>
       </Modal>
-      <PositionedSnackbar snackbarOpen={snackbarMessage} />
+      <PositionedSnackbar snackbarOpen={snackbarMessage} setSnackbarMessage={setSnackbarMessage}/>
     </>
   );
 }

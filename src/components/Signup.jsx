@@ -28,10 +28,10 @@ export default function Signup() {
         </CustomTypo>
         <CustomTextField placeholder="Enter your name" />
         <CustomTextField placeholder="Phone number" />
-        <CustomTextField placeholder="Enter your email Id" />
-        <CustomTextField placeholder="DOB" />
-        <CustomTextField placeholder="Who you are?" />
-        <CustomTextField placeholder="Password" />
+        <CustomTextField placeholder="Enter your email Id" type="email"/>
+        <CustomTextField placeholder="DOB" type="date"/>
+        <CustomTextField placeholder="Who you are?" type="dropdown"/>
+        <CustomTextField placeholder="Password" type="password"/>
         <Box
           sx={{
             display: "flex",

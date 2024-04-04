@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 export default function CustomTextField({
+  type,
   name,
   onChange,
   placeholder,
@@ -16,6 +17,7 @@ export default function CustomTextField({
   return (
     <>
       <TextField
+      type=""
         name={name}
         onChange={onChange}
         placeholder={placeholder}
@@ -34,8 +36,8 @@ export default function CustomTextField({
             fontFamily: "Poppins !important",
           },
         }}
-        error={error ? error : ""}
-        helperText={helperText ? helperText : ""}
+        error={error}
+        helperText={helperText}
       >
         {children}
       </TextField>

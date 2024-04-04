@@ -3,39 +3,58 @@ import Snackbar from "@mui/material/Snackbar";
 import { Alert, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function PositionedSnackbar({ snackbarOpen }) {
+export default function PositionedSnackbar({
+  snackbarOpen,
+  setSnackbarMessage,
+}) {
   const [state, setState] = React.useState({
     open: false,
     vertical: "top",
     horizontal: "center",
   });
-  const { vertical, horizontal, open } = state;
-
-  const handleClick = (newState) => () => {
-    setState({ ...newState, open: true });
-  };
+  const { vertical, horizontal } = state;
 
   const handleClose = () => {
-    setState({ ...state, open: false });
+    setSnackbarMessage(false);
   };
 
   return (
     <>
-      <Box sx={{ maxWidth: "434.46px",maxHeight:"54px",marginTop:"63px" }}>
+      <Box
+        sx={{
+          maxWidth: "434.46px",
+          maxHeight: "54px",
+          marginTop: "63px",
+          marginLeft: "528px",
+        }}
+      >
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
           open={snackbarOpen}
-          onClose={handleClose}
-          message="The Wholesaler has been added successfully!"
+          autoHideDuration={5000}
           key={vertical + horizontal}
-          
-        />
-        <IconButton onClick={handleClose}>
-        <CloseIcon fontSize="small" />
-      </IconButton>
+          onClose={handleClose}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          }
+        >
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            variant="filled"
+            icon={false} 
+          >
+            The Wholesaler has been added successfully!
+          </Alert>
+        </Snackbar>
       </Box>
-    
-      
     </>
   );
 }

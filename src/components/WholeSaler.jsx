@@ -11,6 +11,7 @@ import wholesalers from "../data/wholesalers";
 
 export default function WholeSaler() {
   const [pageNo, setPageNo] = useState(1);
+  const [filteredData, setFilteredData] = useState([]);
   const [open, setOpen] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
   const handleChange = (event, value) => {
@@ -18,6 +19,11 @@ export default function WholeSaler() {
   };
   const [data, setData] = useState(wholesalers);
   console.log("data", data);
+
+  const handleFilterChange = (user) => {
+    console.log(user, "hello");
+    setFilteredData([user])
+  };
 
   return (
     <>
@@ -67,7 +73,12 @@ export default function WholeSaler() {
             marginTop: "26px",
           }}
         />
-        <WholesalerTable pageNo={pageNo} data={data} setData={setData} />
+        <WholesalerTable
+          pageNo={pageNo}
+          data={data}
+          setData={setData}
+          filteredData={filteredData}
+        />
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <Box
             sx={{
@@ -112,6 +123,8 @@ export default function WholeSaler() {
         openFilter={openFilter}
         setOpenFilter={setOpenFilter}
         setData={setData}
+        handleFilterChange={handleFilterChange}
+        setFilteredData={setFilteredData}
       />
     </>
   );

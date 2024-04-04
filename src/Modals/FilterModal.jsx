@@ -7,6 +7,7 @@ import modalClose from "../icons/modalClose.svg";
 import { Divider } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
+import { useState } from "react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -18,9 +19,16 @@ const style = {
   borderRadius: "12px",
 };
 
-export default function FilterModal({ openFilter, setOpenFilter }) {
+export default function FilterModal({
+  openFilter,
+  setOpenFilter,
+  handleFilterChange,
+  setFilteredData,
+}) {
   const handleClose = () => setOpenFilter(false);
-  const [formData, setFormData] = React.useState({});
+  const [formData, setFormData] = useState({});
+  const [emailError, setEmailError] = useState(false);
+  const [wholesalerIdError, setWholesalerIdError] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,12 +36,37 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
       ...formData,
       [name]: value,
     });
+
+    const validateEmail = (email) => {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    };
+
+    const validateWholesalerId = (wholesalerId) => {
+      const re = /^[A-Za-z]{3}\d{3}$/;
+      return re.test(wholesalerId);
+    };
+
+    if (name === "email") {
+      const isValidEmail = validateEmail(value);
+      setEmailError(!isValidEmail);
+    } else if (name === "wholesalerId") {
+      const isValidateWholesalerId = validateWholesalerId(value);
+      setWholesalerIdError(!isValidateWholesalerId);
+    }
   };
 
+  const handleClearFilter = () => {
+    setFormData({});
+  };
+  console.log("gejck f fd",formData)
+
   const handleSubmit = () => {
-    // Access formData here and perform necessary actions
-    console.log(formData);
-    // Example: You can pass formData to a parent component via a function prop
+    if (emailError || wholesalerIdError) {
+      console.log("error");
+      return;
+    }
+    handleFilterChange(formData);
   };
   return (
     <>
@@ -71,7 +104,7 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
               }}
             >
               <CustomButton
-                onClick={() => setFormData({})}
+                onClick={handleClearFilter}
                 variant="outlined"
                 color="#4D47C3"
                 bgColor="none"
@@ -137,7 +170,7 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
                 Last Name
               </CustomTypo>
               <CustomTextField
-              defaultValue={formData.lastName}
+                defaultValue={formData.lastName}
                 name="lastName"
                 onChange={handleChange}
                 width="377px"
@@ -155,6 +188,8 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
                 Email ID
               </CustomTypo>
               <CustomTextField
+                error={emailError}
+                helperText={emailError && "Enter valid Email Id"}
                 name="email"
                 onChange={handleChange}
                 width="377px"
@@ -189,6 +224,8 @@ export default function FilterModal({ openFilter, setOpenFilter }) {
                 Wholesaler ID
               </CustomTypo>
               <CustomTextField
+                error={wholesalerIdError}
+                helperText={wholesalerIdError && "Enter valid Wholesaler Id"}
                 name="wholesalerId"
                 onChange={handleChange}
                 width="377px"

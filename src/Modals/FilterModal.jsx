@@ -8,6 +8,12 @@ import { Divider } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
 import { useState } from "react";
+import {
+  validateEmail,
+  validateWholesalerId,
+  validateLocId,
+} from "../validate.js";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -18,6 +24,8 @@ const style = {
   bgcolor: "#FFFFFF",
   borderRadius: "12px",
 };
+
+
 
 export default function FilterModal({
   openFilter,
@@ -37,16 +45,6 @@ export default function FilterModal({
       [name]: value,
     });
 
-    const validateEmail = (email) => {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(String(email).toLowerCase());
-    };
-
-    const validateWholesalerId = (wholesalerId) => {
-      const re = /^[A-Za-z]{3}\d{3}$/;
-      return re.test(wholesalerId);
-    };
-
     if (name === "email") {
       const isValidEmail = validateEmail(value);
       setEmailError(!isValidEmail);
@@ -56,10 +54,12 @@ export default function FilterModal({
     }
   };
 
+  
+
   const handleClearFilter = () => {
     setFormData({});
   };
-  console.log("gejck f fd",formData)
+  console.log("gejck f fd", formData);
 
   const handleSubmit = () => {
     if (emailError || wholesalerIdError) {

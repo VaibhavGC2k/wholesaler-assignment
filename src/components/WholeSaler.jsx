@@ -20,8 +20,7 @@ export default function WholeSaler() {
   const [data, setData] = useState(wholesalers);
 
   const handleFilterChange = (user) => {
-  
-    setFilteredData([user])
+    setFilteredData([user]);
   };
 
   return (
@@ -104,11 +103,17 @@ export default function WholeSaler() {
                   color="primary"
                   onChange={handleChange}
                   sx={{
-                    "& .MuiPaginationItem-root:first-of-type": {
-                      color: "red",
+                    "& .Mui-selected": {
+                      color: "#FFFFF",
+                      bgcolor:"4D47C3"
                     },
-                    "& .MuiPaginationItem-root:last-of-type": {
-                      color: "blue",
+                    "& .MuiPaginationItem-root": {
+                      border: "1px solid grey",
+                      mr: "16px",
+                      "&:hover": {
+                        bgcolor: "#4D47C3",
+                        color: "#FFFFFF"
+                      },
                     },
                   }}
                 />

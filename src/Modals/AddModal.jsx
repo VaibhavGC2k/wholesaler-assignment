@@ -8,6 +8,11 @@ import CustomTypo from "../customComponents/CustomTypo";
 import { Modal, Box, Button, Divider } from "@mui/material";
 import PositionedSnackbar from "../components/Snackbar";
 import CustomButton from "../customComponents/CustomButton";
+import {
+  validateEmail,
+  validateWholesalerId,
+  validateLocId,
+} from "../validate.js";
 
 const style = {
   position: "absolute",
@@ -36,7 +41,6 @@ export default function AddModal({ open, setOpen, setData, data }) {
       ...formData,
       [name]: value,
     });
-   
 
     // Validate email
     if (name === "email") {
@@ -60,22 +64,6 @@ export default function AddModal({ open, setOpen, setData, data }) {
     handleClose();
     setSnackbarMessage(true);
   };
-
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const validateWholesalerId = (wholesalerId) => {
-    const re = /^[A-Za-z]{3}\d{3}$/;
-    return re.test(wholesalerId);
-  };
-  
-  const validateLocId = (locId) => {
-    const re = /^[A-Za-z]{2}\d{6}$/;
-    return re.test(locId);
-  };
-
 
   return (
     <>
@@ -145,6 +133,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
                         {index === 4 && "Wholesaler ID"}
                       </CustomTypo>
                       <TextField
+                      required="true"
                         name={
                           (index === 0 && "firstName") ||
                           (index === 1 && "lastName") ||
@@ -258,7 +247,10 @@ export default function AddModal({ open, setOpen, setData, data }) {
           </CustomButton>
         </Box>
       </Modal>
-      <PositionedSnackbar snackbarOpen={snackbarMessage} setSnackbarMessage={setSnackbarMessage}/>
+      <PositionedSnackbar
+        snackbarOpen={snackbarMessage}
+        setSnackbarMessage={setSnackbarMessage}
+      />
     </>
   );
 }

@@ -18,7 +18,7 @@ export default function CustomTextField({
   return (
     <>
       <TextField
-      type={type}
+        type={type}
         disabled={disabled}
         name={name}
         onChange={onChange}

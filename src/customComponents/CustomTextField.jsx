@@ -14,10 +14,12 @@ export default function CustomTextField({
   margin,
   helperText,
   error,
+  value
 }) {
   return (
     <>
       <TextField
+      value={value}
         type={type}
         disabled={disabled}
         name={name}

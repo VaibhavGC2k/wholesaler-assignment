@@ -45,7 +45,7 @@ export default function WholesalerTable({
     );
   });
 
-
+console.log(openEdit)
   return (
     <>
       <Table
@@ -277,6 +277,7 @@ export default function WholesalerTable({
                     <Button
                       onClick={() => {
                         handleDelete(row.wholesalerId);
+                        console.log("heelo")
                         setOpenEdit(true);
                       }}
                     >

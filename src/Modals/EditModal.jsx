@@ -8,6 +8,12 @@ import { Divider, Grid, MenuItem, Select } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
 import { useState } from "react";
+import {
+  validateEmail,
+  validateWholesalerId,
+  validateLocId,
+} from "../validate.js";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -26,6 +32,9 @@ export default function EditModal({
   setData: setWholeData,
   data: wholeData,
 }) {
+  console.log("gfg");
+  const [emailError, setEmailError] = useState(false);
+  const [LocIdError, setLocIdError] = useState(false);
   const handleClose = () => setOpenEdit(false);
   const [formData, setFormData] = useState(
     wholeData.find((obj) => obj.wholesalerId == id)
@@ -40,21 +49,35 @@ export default function EditModal({
       ...formData,
       [name]: value,
     });
+
+    if (name === "email") {
+      const isValidEmail = validateEmail(value);
+      setEmailError(!isValidEmail);
+    } else if (name === "LocId") {
+      const isLocId = validateLocId(value);
+      setLocIdError(!isLocId);
+    }
   };
 
   const handleFormSubmit = () => {
-    console.log(wholeData,formData);
-    const index = wholeData.findIndex(item => item.wholesalerId === formData.wholesalerId);
-    console.log(index,"this is index")
-    if (index !== -1) {
-      wholeData[index] = formData;
+    if (emailError || LocIdError) {
+      throw new Error("Error");
     } else {
-      console.log("No object found with the provided wholesalerId.");
+      console.log(wholeData, formData);
+      const index = wholeData.findIndex(
+        (item) => item.wholesalerId === formData.wholesalerId
+      );
+      console.log(index, "this is index");
+      if (index !== -1) {
+        wholeData[index] = formData;
+      } else {
+        console.log("No object found with the provided wholesalerId.");
+      }
+      setWholeData(wholeData);
+      handleClose();
     }
-    setWholeData(wholeData)
-    handleClose();
   };
-
+  console.log("modal");
   return (
     <>
       <Modal
@@ -123,6 +146,10 @@ export default function EditModal({
                         {index === 4 && "Wholesaler ID"}
                       </CustomTypo>
                       <CustomTextField
+                        error={index === 2 && emailError}
+                        helperText={
+                          index === 2 && emailError && "Enter Valid Email Id"
+                        }
                         name={
                           (index === 0 && "firstName") ||
                           (index === 1 && "lastName") ||
@@ -185,6 +212,10 @@ export default function EditModal({
                         {index === 6 && "LocId"}
                       </CustomTypo>
                       <CustomTextField
+                        error={index === 6 && LocIdError}
+                        helperText={
+                          index === 6 && LocIdError && "Enter Valid LocId"
+                        }
                         name={index === 6 && "LocId"}
                         onChange={handleChange}
                         border="0px"

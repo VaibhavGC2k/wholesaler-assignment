@@ -56,13 +56,22 @@ export default function AddModal({ open, setOpen, setData, data }) {
   };
 
   const handleFormSubmit = () => {
-    if (emailError || wholesalerIdError || LocIdError) {
-      console.log("error");
-      return;
-    }
-    setData([...data, formData]);
-    handleClose();
-    setSnackbarMessage(true);
+    try {
+      if (
+        emailError ||
+        wholesalerIdError ||
+        LocIdError 
+        ) {
+          throw new Error("Error")
+        }else{
+
+          setData([...data, formData]);
+          handleClose();
+          setSnackbarMessage(true);
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
   };
 
   return (
@@ -133,7 +142,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
                         {index === 4 && "Wholesaler ID"}
                       </CustomTypo>
                       <TextField
-                      required="true"
+                        required="true"
                         name={
                           (index === 0 && "firstName") ||
                           (index === 1 && "lastName") ||

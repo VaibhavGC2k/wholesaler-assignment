@@ -123,13 +123,16 @@ export default function WholeSaler() {
         </Box>
       </Box>
       <AddModal open={open} setOpen={setOpen} setData={setData} data={data} />
-      <FilterModal
+     {
+      filteredData && 
+     <FilterModal
         openFilter={openFilter}
         setOpenFilter={setOpenFilter}
         setData={setData}
         handleFilterChange={handleFilterChange}
         setFilteredData={setFilteredData}
       />
+     }
     </>
   );
 }

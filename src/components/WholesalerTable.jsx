@@ -26,7 +26,7 @@ export default function WholesalerTable({
     setId(id);
   };
 
-  console.log(filteredData, data, "filtered data");
+  
   const compareObjects = (obj1, obj2) => {
     // Compare specific properties
     return (
@@ -44,7 +44,7 @@ export default function WholesalerTable({
       compareObjects(filteredObj, dataObj)
     );
   });
-  console.log(matchedObjects,"matched Data")
+
 
   return (
     <>

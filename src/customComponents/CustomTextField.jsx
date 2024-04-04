@@ -4,6 +4,7 @@ import React from "react";
 export default function CustomTextField({
   type,
   name,
+  disabled,
   onChange,
   placeholder,
   children,
@@ -17,7 +18,8 @@ export default function CustomTextField({
   return (
     <>
       <TextField
-      type=""
+      type={type}
+        disabled={disabled}
         name={name}
         onChange={onChange}
         placeholder={placeholder}

@@ -27,20 +27,31 @@ export default function EditModal({
   data: wholeData,
 }) {
   const handleClose = () => setOpenEdit(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(
+    wholeData.find((obj) => obj.wholesalerId == id)
+  );
   const [data, setData] = useState(
     wholeData.find((obj) => obj.wholesalerId == id)
   );
-  console.log(data);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-   
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleFormSubmit = () => {
-    setData([...wholeData, formData]);
-    console.log(formData)
+    console.log(wholeData,formData);
+    const index = wholeData.findIndex(item => item.wholesalerId === formData.wholesalerId);
+    console.log(index,"this is index")
+    if (index !== -1) {
+      wholeData[index] = formData;
+    } else {
+      console.log("No object found with the provided wholesalerId.");
+    }
+    setWholeData(wholeData)
     handleClose();
   };
 
@@ -107,12 +118,20 @@ export default function EditModal({
                       >
                         {index === 0 && "First Name"}
                         {index === 1 && "Last Name"}
-                        {index === 2 && "Email "}
+                        {index === 2 && "Email"}
                         {index === 3 && "Phone Number"}
                         {index === 4 && "Wholesaler ID"}
                       </CustomTypo>
                       <CustomTextField
-                      onChange={handleChange}
+                        name={
+                          (index === 0 && "firstName") ||
+                          (index === 1 && "lastName") ||
+                          (index === 2 && "email") ||
+                          (index === 3 && "phoneNumber") ||
+                          (index === 4 && "wholesalerId")
+                        }
+                        disabled={index === 4 && true}
+                        onChange={handleChange}
                         border="0px"
                         defaultValue={
                           (index === 0 && data["firstName"]) ||
@@ -166,7 +185,8 @@ export default function EditModal({
                         {index === 6 && "LocId"}
                       </CustomTypo>
                       <CustomTextField
-                      onChange={handleChange}
+                        name={index === 6 && "LocId"}
+                        onChange={handleChange}
                         border="0px"
                         defaultValue={data["LocId"]}
                       />
@@ -177,7 +197,7 @@ export default function EditModal({
             </Grid>
           </Box>
           <CustomButton
-          onClick={handleFormSubmit}
+            onClick={handleFormSubmit}
             padding="14px, 60px, 14px, 61px"
             margin="40px 0px 58px 40px"
             width="158px"

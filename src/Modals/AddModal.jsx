@@ -36,6 +36,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
       ...formData,
       [name]: value,
     });
+   
 
     // Validate email
     if (name === "email") {

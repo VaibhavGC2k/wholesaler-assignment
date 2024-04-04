@@ -18,10 +18,9 @@ export default function WholeSaler() {
     setPageNo(value);
   };
   const [data, setData] = useState(wholesalers);
-  console.log("data", data);
 
   const handleFilterChange = (user) => {
-    console.log(user, "hello");
+  
     setFilteredData([user])
   };
 

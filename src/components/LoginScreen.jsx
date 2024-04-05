@@ -11,13 +11,13 @@ export default function LoginScreen() {
         sx={{
           display: "flex",
           flexDirection: "row",
-         
         }}
       >
         <Design
-          text1="Sign in to squadra to use the app"
-          text2="If you don’t have an account register"
+          text1="Sign in to"
+          text2="squadra to use the app"
           text3="Register here !"
+          text4="If you don’t have an account register"
           link="/signup"
         />
 

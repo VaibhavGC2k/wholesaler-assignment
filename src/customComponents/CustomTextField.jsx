@@ -3,35 +3,18 @@ import React from "react";
 
 export default function CustomTextField({
   backgroundColor,
-  required,
-  type,
-  name,
-  disabled,
-  onChange,
-  placeholder,
   children,
-  defaultValue,
   width,
   height,
   margin,
-  helperText,
-  error,
-  value,
+  ...rest
 }) {
   return (
     <>
       <TextField
-        required={required}
-        value={value}
-        type={type}
-        disabled={disabled}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
         InputLabelProps={{
           shrink: true,
         }}
-        defaultValue={defaultValue}
         InputProps={{
           style: {
             borderRadius: "6px",
@@ -43,8 +26,7 @@ export default function CustomTextField({
             fontFamily: "Poppins !important",
           },
         }}
-        error={error}
-        helperText={helperText}
+        {...rest}
       >
         {children}
       </TextField>

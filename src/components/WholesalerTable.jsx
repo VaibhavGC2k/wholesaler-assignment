@@ -134,7 +134,7 @@ export default function WholesalerTable({
         >
           {matchedObjects.length
             ? matchedObjects
-                .slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6)
+                .slice((pageNo - 1) * 7, (pageNo - 1) * 7 + 7)
                 .map((row) => (
                   <TableRow
                     key={row.wholesalerId}
@@ -213,7 +213,7 @@ export default function WholesalerTable({
                     </TableCell>
                   </TableRow>
                 ))
-            : data.slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6).map((row) => (
+            : data.slice((pageNo - 1) * 7, (pageNo - 1) * 7 + 7).map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{

@@ -4,13 +4,13 @@ import SquadraIcon from "../icons/SquadraLogo.svg";
 import CustomTypo from "../customComponents/CustomTypo";
 import manStanding from "../icons/manStanding.svg";
 import { Link } from "react-router-dom";
-export default function Design({ text1, text2, text3, link }) {
+export default function Design({ text1, text2, text3, text4, link }) {
   return (
     <>
       <Box
         sx={{
           minWidth: "50%",
-          minHeight: "1080px",
+          minHeight: "1060px",
           backgroundColor: "#F0EFFF",
           borderTopRightRadius: "70px",
           borderBottomRightRadius: "70px",
@@ -31,24 +31,24 @@ export default function Design({ text1, text2, text3, link }) {
         </Box>
         <Box sx={{ marginLeft: "172px", marginTop: "52px" }}>
           <CustomTypo fontSize="20px" fontWeight="400" fontFamily="Poppins">
-            If you already have an account
+            {text4}
           </CustomTypo>
         </Box>
         <Box sx={{ marginLeft: "172px", marginTop: "10px" }}>
           <CustomTypo fontSize="20px" fontWeight="400" fontFamily="Poppins">
-            you can{" "}
+            you can{"  "}
             <Link
               to={link}
               style={{ textDecoration: "none", color: "#4D47C3" }}
             >
-              {text3}
+              {" " + text3}
             </Link>
           </CustomTypo>
         </Box>
         <img
           src={manStanding}
           alt="man standing"
-          style={{ margin: "12px 60px 44px 577px" }}
+          style={{ margin: "0px 0px 0px 577px" }}
         />
       </Box>
     </>

@@ -25,7 +25,7 @@ export default function WholeSaler() {
 
   return (
     <>
-      <Box sx={{ marginTop: "128px", marginLeft: "33px" }}>
+      <Box sx={{ marginTop: "108px", marginLeft: "33px" }}>
         <Box sx={{ marginLeft: "30px" }}>
           <CustomTypo
             fontWeight="600"
@@ -98,7 +98,7 @@ export default function WholeSaler() {
             <Box sx={{ marginLeft: "539px" }}>
               <Stack>
                 <Pagination
-                  count={Math.ceil(data.length / 6)}
+                  count={Math.ceil(data.length / 7)}
                   variant="outlined"
                   color="primary"
                   onChange={handleChange}

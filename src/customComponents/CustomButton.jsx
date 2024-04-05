@@ -7,11 +7,12 @@ export default function CustomButton({
   onClick,
   padding,
   children,
+  fontSize,
   bgColor,
   color,
   width,
   margin,
-  height,
+  height
 }) {
   return (
     <>
@@ -23,11 +24,14 @@ export default function CustomButton({
           borderRadius: "6px",
           padding: padding ? padding : "9px, 25px, 9px, 25px",
           maxWidth: width,
-          maxHeight: height ? height : "",
+          fontSize: { fontSize },
+          maxHeight: height ? height : "59px",
           gap: "10px",
+  
           color: color ? color : "#FFFFFF",
-          margin: margin ? margin : "",
+          margin: margin ? margin : "0px",
           textTransform: "capitalize",
+          '&:hover': { backgroundColor: '#4D47C3' }
         }}
       >
         <CustomTypo fontFamily="Montserrat" fontSize="15px" fontWeight="400">

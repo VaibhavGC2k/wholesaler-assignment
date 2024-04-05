@@ -47,7 +47,7 @@ export default function WholesalerTable({
   return (
     <>
       <Table
-        sx={{ marginTop: "36px", maxWidth: "1491px" }}
+        sx={{ maxWidth: "1491px" }}
         className="wholesalerTable"
       >
         <TableHead>
@@ -213,7 +213,7 @@ export default function WholesalerTable({
                     </TableCell>
                   </TableRow>
                 ))
-            : data.slice((pageNo - 1) * 7, (pageNo - 1) * 7 + 7).map((row) => (
+            : data.slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6).map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{

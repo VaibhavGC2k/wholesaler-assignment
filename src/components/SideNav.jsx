@@ -19,7 +19,7 @@ export default function SideNav() {
   };
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", overflow: "hidden" }}>
         <Navbar />
         <Drawer
           variant="permanent"
@@ -108,7 +108,14 @@ export default function SideNav() {
             </List>
           </Box>
         </Drawer>
-        <WholeSaler />
+        <Box
+          sx={{
+            maxHeight: "fit-content",
+            maxWidth: "1820px",
+          }}
+        >
+          <WholeSaler />
+        </Box>
       </Box>
     </>
   );

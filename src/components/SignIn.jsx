@@ -8,11 +8,12 @@ import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
 import { Checkbox, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {useNavigate} from 'react-router-dom';
 
 import { Link, Navigate } from "react-router-dom";
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -27,6 +28,10 @@ export default function SignIn() {
       fontFamily: "Poppins",
     },
   };
+
+  const handleClick=()=>{
+    navigate('/wholesaler')
+  }
 
   return (
     <>
@@ -64,7 +69,8 @@ export default function SignIn() {
                 <InputAdornment position="end">
                   <IconButton onClick={handleTogglePassword} edge="end">
                     {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>s
+                  </IconButton>
+                  s
                 </InputAdornment>
               ),
             }}
@@ -72,25 +78,26 @@ export default function SignIn() {
           <CustomTypo fontWeight="400px" fontSize="16px" color="#B0B0B0">
             Forgot password ?
           </CustomTypo>
-          
-        <Button
-        variant="contained"
-        sx={{
-          borderRadius: "5px",
-          backgroundColor: "#4D47C3",
-          minHeight: "59px",
-          textTransform: "capitalize",
-        }}
-      >
-        <CustomTypo
-          fontWeight="500"
-          fontSize="16px"
-          lineHeight="24px"
-          color="#FFFFFF"
-        >
-          Login
-        </CustomTypo>
-      </Button>
+
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{
+              borderRadius: "5px",
+              backgroundColor: "#4D47C3",
+              minHeight: "59px",
+              textTransform: "capitalize",
+            }}
+          >
+            <CustomTypo
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="24px"
+              color="#FFFFFF"
+            >
+              Login
+            </CustomTypo>
+          </Button>
           <Box
             sx={{
               width: "100%",

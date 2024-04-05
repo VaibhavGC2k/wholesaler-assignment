@@ -24,13 +24,22 @@ const style = {
   bgcolor: "#FFFFFF",
   borderRadius: "6px",
 };
+const InitialFormData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  wholesalerId: "",
+  role: "",
+  LocId: "",
+};
 
 export default function AddModal({ open, setOpen, setData, data }) {
   const handleClose = () => setOpen(false);
 
   const [selectedValue, setSelectedValue] = useState();
   const [snackbarMessage, setSnackbarMessage] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(InitialFormData);
   const [emailError, setEmailError] = useState(false);
   const [wholesalerIdError, setWholesalerIdError] = useState(false);
   const [LocIdError, setLocIdError] = useState(false);
@@ -57,21 +66,29 @@ export default function AddModal({ open, setOpen, setData, data }) {
 
   const handleFormSubmit = () => {
     try {
-      if (
-        emailError ||
-        wholesalerIdError ||
-        LocIdError 
-        ) {
-          throw new Error("Error")
-        }else{
-
+      if (emailError || wholesalerIdError || LocIdError) {
+        throw new Error("Validation Error");
+      } else {
+        const isEmpty =
+          formData.LocId === "" ||
+          formData.firstName === "" ||
+          formData.lastName === "" ||
+          formData.wholesalerId === "" ||
+          formData.email === "" ||
+          formData.phoneNumber === "" ||
+          formData.role === "";
+        if (isEmpty) {
+          throw new Error("Form is Empty");
+        } else {
           setData([...data, formData]);
+          setFormData(InitialFormData);
           handleClose();
           setSnackbarMessage(true);
         }
-      } catch (error) {
-        console.log(error.message)
       }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -192,7 +209,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
                       <Select
                         value={selectedValue}
                         onChange={handleChange}
-                        name="Role"
+                        name="role"
                         variant="outlined"
                         style={{
                           marginTop: "8px",
@@ -259,6 +276,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
       <PositionedSnackbar
         snackbarOpen={snackbarMessage}
         setSnackbarMessage={setSnackbarMessage}
+        message={"The Wholesaler has been added successfully!"}
       />
     </>
   );

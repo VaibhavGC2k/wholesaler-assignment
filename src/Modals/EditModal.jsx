@@ -13,6 +13,7 @@ import {
   validateWholesalerId,
   validateLocId,
 } from "../validate.js";
+import PositionedSnackbar from "../components/Snackbar.jsx";
 
 const style = {
   position: "absolute",
@@ -32,9 +33,10 @@ export default function EditModal({
   setData: setWholeData,
   data: wholeData,
 }) {
-  console.log("gfg");
+  
   const [emailError, setEmailError] = useState(false);
   const [LocIdError, setLocIdError] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState(false);
   const handleClose = () => setOpenEdit(false);
   const [formData, setFormData] = useState(
     wholeData.find((obj) => obj.wholesalerId == id)
@@ -60,24 +62,29 @@ export default function EditModal({
   };
 
   const handleFormSubmit = () => {
-    if (emailError || LocIdError) {
-      throw new Error("Error");
-    } else {
-      console.log(wholeData, formData);
-      const index = wholeData.findIndex(
-        (item) => item.wholesalerId === formData.wholesalerId
-      );
-      console.log(index, "this is index");
-      if (index !== -1) {
-        wholeData[index] = formData;
+    try {
+      if (emailError || LocIdError) {
+        throw new Error("Validation Error");
       } else {
-        console.log("No object found with the provided wholesalerId.");
+       
+        const index = wholeData.findIndex(
+          (item) => item.wholesalerId === formData.wholesalerId
+        );
+        
+        if (index !== -1) {
+          wholeData[index] = formData;
+        } else {
+          console.log("No object found with the provided wholesalerId.");
+        }
+        setWholeData(wholeData);
+        handleClose();
+        setSnackbarMessage(true);
       }
-      setWholeData(wholeData);
-      handleClose();
+    } catch (error) {
+      console.log(error.message);
     }
   };
-  console.log("modal");
+  
   return (
     <>
       <Modal
@@ -238,6 +245,11 @@ export default function EditModal({
           </CustomButton>
         </Box>
       </Modal>
+      <PositionedSnackbar
+        snackbarOpen={snackbarMessage}
+        setSnackbarMessage={setSnackbarMessage}
+        message={"The Wholesaler has been Updated successfully!"}
+      />
     </>
   );
 }

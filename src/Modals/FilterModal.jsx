@@ -20,7 +20,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "863px",
-  height: "461px",
+  height: "500px",
   bgcolor: "#FFFFFF",
   borderRadius: "12px",
 };
@@ -32,10 +32,10 @@ export default function FilterModal({
   setFilteredData,
 }) {
   const handleClose = () => {
-    setOpenFilter(false)
-    setEmailError(false)
-    setWholesalerIdError(false)
-  }
+    setOpenFilter(false);
+    setEmailError(false);
+    setWholesalerIdError(false);
+  };
   const [formData, setFormData] = useState({});
   const [emailError, setEmailError] = useState(false);
   const [wholesalerIdError, setWholesalerIdError] = useState(false);
@@ -58,15 +58,14 @@ export default function FilterModal({
 
   const handleClearFilter = () => {
     setFormData({
-      firstName:"",
-      lastName:'',
-      email:"",
-      wholesalerId:"",
-      phoneNumber:""
-
-
+      firstName: "",
+      lastName: "",
+      email: "",
+      wholesalerId: "",
+      phoneNumber: "",
     });
-    console.log("gejck f fd", formData);
+    setWholesalerIdError(false);
+    setEmailError(false);
   };
 
   const handleSubmit = () => {
@@ -162,7 +161,7 @@ export default function FilterModal({
               </CustomTypo>
               <CustomTextField
                 onChange={handleChange}
-              value={formData.firstName}
+                value={formData.firstName}
                 name="firstName"
                 width="377px"
                 height="48px"
@@ -198,7 +197,6 @@ export default function FilterModal({
               </CustomTypo>
               <CustomTextField
                 value={formData.email}
-
                 error={emailError}
                 helperText={emailError && "Enter valid Email Id"}
                 name="email"
@@ -218,7 +216,7 @@ export default function FilterModal({
                 Phone Number
               </CustomTypo>
               <CustomTextField
-              value={formData.phoneNumber}
+                value={formData.phoneNumber}
                 name="phoneNumber"
                 onChange={handleChange}
                 width="377px"
@@ -236,7 +234,7 @@ export default function FilterModal({
                 Wholesaler ID
               </CustomTypo>
               <CustomTextField
-              value ={formData.wholesalerId}
+                value={formData.wholesalerId}
                 error={wholesalerIdError}
                 helperText={wholesalerIdError && "Enter valid Wholesaler Id"}
                 name="wholesalerId"

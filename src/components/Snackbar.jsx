@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function PositionedSnackbar({
   snackbarOpen,
   setSnackbarMessage,
+  message
 }) {
   const [state, setState] = React.useState({
     open: false,
@@ -51,7 +52,7 @@ export default function PositionedSnackbar({
             variant="filled"
             icon={false} 
           >
-            The Wholesaler has been added successfully!
+            {message}
           </Alert>
         </Snackbar>
       </Box>

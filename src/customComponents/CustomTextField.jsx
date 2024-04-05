@@ -2,6 +2,8 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 export default function CustomTextField({
+  backgroundColor,
+  required,
   type,
   name,
   disabled,
@@ -14,12 +16,13 @@ export default function CustomTextField({
   margin,
   helperText,
   error,
-  value
+  value,
 }) {
   return (
     <>
       <TextField
-      value={value}
+        required={required}
+        value={value}
         type={type}
         disabled={disabled}
         name={name}

@@ -26,7 +26,6 @@ export default function WholesalerTable({
     setId(id);
   };
 
-  
   const compareObjects = (obj1, obj2) => {
     // Compare specific properties
     return (
@@ -45,7 +44,6 @@ export default function WholesalerTable({
     );
   });
 
-console.log(openEdit)
   return (
     <>
       <Table
@@ -277,7 +275,7 @@ console.log(openEdit)
                     <Button
                       onClick={() => {
                         handleDelete(row.wholesalerId);
-                        console.log("heelo")
+
                         setOpenEdit(true);
                       }}
                     >

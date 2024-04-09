@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Pagination, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomTypo from "../customComponents/CustomTypo";
 import CustomButton from "../customComponents/CustomButton";
 import funnel from "../icons/funnel.png";
@@ -14,6 +14,8 @@ export default function WholeSaler() {
   const [filteredData, setFilteredData] = useState([]);
   const [open, setOpen] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
+  const [dataFromChild, setDataFromChild] = useState([]);
+
   const handleChange = (event, value) => {
     setPageNo(value);
   };
@@ -22,6 +24,11 @@ export default function WholeSaler() {
   const handleFilterChange = (user) => {
     setFilteredData([user]);
   };
+
+  function handleDataFromChild(data) {
+    setDataFromChild(data);
+  }
+  console.log(filteredData,"mangojuice",dataFromChild)
 
   return (
     <>
@@ -76,7 +83,8 @@ export default function WholeSaler() {
           data={data}
           setData={setData}
           filteredData={filteredData}
-          
+          setFilteredData={setFilteredData}
+          sendDataToParent={handleDataFromChild}
         />
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <Box
@@ -99,21 +107,25 @@ export default function WholeSaler() {
             <Box sx={{ marginLeft: "539px" }}>
               <Stack>
                 <Pagination
-                  count={Math.ceil(data.length / 6)}
+                  count={
+                    dataFromChild.length
+                      ? Math.ceil(dataFromChild.length / 6)
+                      : Math.ceil(data.length / 6)
+                  }
                   variant="outlined"
                   color="primary"
                   onChange={handleChange}
                   sx={{
                     "& .Mui-selected": {
                       color: "#FFFFF",
-                      bgcolor:"4D47C3"
+                      bgcolor: "4D47C3",
                     },
                     "& .MuiPaginationItem-root": {
                       border: "1px solid grey",
                       mr: "16px",
                       "&:hover": {
                         bgcolor: "#4D47C3",
-                        color: "#FFFFFF"
+                        color: "#FFFFFF",
                       },
                     },
                   }}
@@ -124,16 +136,15 @@ export default function WholeSaler() {
         </Box>
       </Box>
       <AddModal open={open} setOpen={setOpen} setData={setData} data={data} />
-     {
-      filteredData && 
-     <FilterModal
-        openFilter={openFilter}
-        setOpenFilter={setOpenFilter}
-        setData={setData}
-        handleFilterChange={handleFilterChange}
-        setFilteredData={setFilteredData}
-      />
-     }
+      {filteredData && (
+        <FilterModal
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
+          setData={setData}
+          handleFilterChange={handleFilterChange}
+          setFilteredData={setFilteredData}
+        />
+      )}
     </>
   );
 }

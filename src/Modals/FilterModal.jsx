@@ -64,6 +64,7 @@ export default function FilterModal({
       wholesalerId: "",
       phoneNumber: "",
     });
+    setFilteredData([]);
     setWholesalerIdError(false);
     setEmailError(false);
   };

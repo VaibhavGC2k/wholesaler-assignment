@@ -3,6 +3,7 @@ import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import HomePage from "./components/HomePage";
 import WholeSalersScreen from "./components/WholeSalersScreen";
+import "./App.css"
 
 function App() {
   return (

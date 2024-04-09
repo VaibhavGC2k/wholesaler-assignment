@@ -90,7 +90,7 @@ export default function DeleteModal({
               onClick={() => setOpenDelete(false)}
               maxWidth="160px"
               maxHeight="44px"
-              padding="13px, 54px, 13px, 54px"
+              padding="13px 54px 13px 54px"
               bgColor="#E6E6E6"
               color="#4D47C3"
             >

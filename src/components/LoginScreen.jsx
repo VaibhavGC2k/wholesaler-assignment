@@ -20,7 +20,6 @@ export default function LoginScreen() {
           text4="If you don’t have an account register"
           link="/signup"
         />
-
         <SignIn />
       </Box>
     </>

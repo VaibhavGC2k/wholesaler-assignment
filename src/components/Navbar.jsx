@@ -12,12 +12,17 @@ export default function Navbar() {
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: "#F1F0FA",
-         
+          boxShadow: "none",
           height: "90px",
           width: "100%",
         }}
       >
-        <Toolbar sx={{ paddingLeft: "0px !important",paddingRight:"0px  !important"}}>
+        <Toolbar
+          sx={{
+            paddingLeft: "0px !important",
+            paddingRight: "0px  !important",
+          }}
+        >
           <Box
             sx={{
               width: "149px",

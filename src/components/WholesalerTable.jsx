@@ -48,8 +48,6 @@ export default function WholesalerTable({
     );
   };
 
-  console.log(pageNo);
-
   return (
     <>
       <Table sx={{ maxWidth: "1491px" }} className="wholesalerTable">
@@ -150,7 +148,7 @@ export default function WholesalerTable({
                       <TableCell>
                         <CustomTypo
                           fontFamily="Poppins"
-                          fontWeight="400"
+                          fontWeight="500"
                           fontSize="15px"
                           color="#151515"
                         >
@@ -160,7 +158,7 @@ export default function WholesalerTable({
                       <TableCell>
                         <CustomTypo
                           fontFamily="Poppins"
-                          fontWeight="400"
+                          fontWeight="500"
                           fontSize="15px"
                           color="#151515"
                         >
@@ -170,7 +168,7 @@ export default function WholesalerTable({
                       <TableCell>
                         <CustomTypo
                           fontFamily="Poppins"
-                          fontWeight="400"
+                          fontWeight="500"
                           fontSize="15px"
                           color="#151515"
                         >
@@ -180,7 +178,7 @@ export default function WholesalerTable({
                       <TableCell>
                         <CustomTypo
                           fontFamily="Poppins"
-                          fontWeight="400"
+                          fontWeight="500"
                           fontSize="15px"
                           color="#151515"
                         >
@@ -190,7 +188,7 @@ export default function WholesalerTable({
                       <TableCell>
                         <CustomTypo
                           fontFamily="Poppins"
-                          fontWeight="400"
+                          fontWeight="500"
                           fontSize="15px"
                           color="#151515"
                         >
@@ -230,7 +228,7 @@ export default function WholesalerTable({
                   <TableCell>
                     <CustomTypo
                       fontFamily="Poppins"
-                      fontWeight="400"
+                      fontWeight="500"
                       fontSize="15px"
                       color="#151515"
                     >
@@ -240,7 +238,7 @@ export default function WholesalerTable({
                   <TableCell>
                     <CustomTypo
                       fontFamily="Poppins"
-                      fontWeight="400"
+                      fontWeight="500"
                       fontSize="15px"
                       color="#151515"
                     >
@@ -250,7 +248,7 @@ export default function WholesalerTable({
                   <TableCell>
                     <CustomTypo
                       fontFamily="Poppins"
-                      fontWeight="400"
+                      fontWeight="500"
                       fontSize="15px"
                       color="#151515"
                     >
@@ -260,7 +258,7 @@ export default function WholesalerTable({
                   <TableCell>
                     <CustomTypo
                       fontFamily="Poppins"
-                      fontWeight="400"
+                      fontWeight="500"
                       fontSize="15px"
                       color="#151515"
                     >
@@ -270,7 +268,7 @@ export default function WholesalerTable({
                   <TableCell>
                     <CustomTypo
                       fontFamily="Poppins"
-                      fontWeight="400"
+                      fontWeight="500"
                       fontSize="15px"
                       color="#151515"
                     >

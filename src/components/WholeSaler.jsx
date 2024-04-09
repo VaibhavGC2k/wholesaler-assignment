@@ -28,7 +28,6 @@ export default function WholeSaler() {
   function handleDataFromChild(data) {
     setDataFromChild(data);
   }
-  console.log(filteredData,"mangojuice",dataFromChild)
 
   return (
     <>
@@ -46,6 +45,7 @@ export default function WholeSaler() {
         <Box sx={{ marginLeft: "1281px", marginTop: "13px" }}>
           <CustomButton
             width="82px"
+            padding="9px 25px 9px 25px"
             height="36px"
             onClick={() => setOpen(true)}
           >
@@ -63,7 +63,7 @@ export default function WholeSaler() {
               backgroundColor: "#4D47C3",
               color: "#FFFFFF",
               marginLeft: "28px",
-              padding: "9px, 25px, 9px, 25px",
+              padding: "9px 25px 9px 25px",
               textTransform: "capitalize",
             }}
           >
@@ -86,7 +86,12 @@ export default function WholeSaler() {
           setFilteredData={setFilteredData}
           sendDataToParent={handleDataFromChild}
         />
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
           <Box
             sx={{
               marginTop: "265px",

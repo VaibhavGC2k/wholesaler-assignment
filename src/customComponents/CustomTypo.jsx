@@ -20,8 +20,7 @@ export default function CustomTypo({
           fontSize: fontSize,
           lineHeight: lineHeight,
           color: color,
-          style,
-          fontFamily: `${fontFamily}`,
+          fontFamily: fontFamily,
         }}
       >
         {children}

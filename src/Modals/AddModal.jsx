@@ -264,7 +264,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
           </Box>
           <CustomButton
             onClick={handleFormSubmit}
-            padding="14px, 60px, 14px, 61px"
+            padding="14px 60px 14px 61px"
             margin="40px 0px 58px 40px"
             width="158px"
             height="46px"

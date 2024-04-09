@@ -55,7 +55,6 @@ export default function Signup() {
       <CustomTextField placeholder="Phone number" type="number" />
       <CustomTextField placeholder="Enter your email Id" type="email" />
       <CustomTextField placeholder="DOB" type="date" />
-
       <CustomSelect placeholder="Who you are?" />
       <TextField
         placeholder="Password"

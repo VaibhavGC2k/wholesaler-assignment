@@ -80,7 +80,7 @@ export default function SideNav() {
                           <CustomTypo
                             fontFamily="Poppins"
                             fontSize="24x"
-                            fontWeight="400"
+                            fontWeight={index === 3 ? 600 : 400}
                             color={
                               selectedItem === index ? "#FFFFFF" : "#151515"
                             }

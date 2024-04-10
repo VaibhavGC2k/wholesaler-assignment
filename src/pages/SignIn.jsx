@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useState } from "react";
 import CustomTypo from "../customComponents/CustomTypo";
 import facebookIcon from "../assets/Facebook.svg";
@@ -6,11 +6,10 @@ import appleIcon from "../assets/apple.svg";
 import googleIcon from "../assets/google.svg";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
-import { Checkbox, IconButton, InputAdornment, TextField } from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
 
-import { Link, Navigate } from "react-router-dom";
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -82,13 +81,13 @@ export default function SignIn() {
           <CustomButton
             variant="contained"
             onClick={handleClick}
-            borderRadius = "9px"
+            borderRadius="9px"
             height="59px"
           >
             <CustomTypo
               fontWeight="500"
               fontSize="16px"
-             
+
               color="#FFFFFF"
             >
               Login

@@ -12,7 +12,6 @@ import deleteIcon from "../assets/Delete.png";
 import { useState } from "react";
 import EditModal from "../modals/EditModal";
 import { useEffect } from "react";
-import { useMemo } from "react";
 
 export default function WholesalerTable({
   pageNo,

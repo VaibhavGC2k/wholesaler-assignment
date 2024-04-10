@@ -4,7 +4,6 @@ import CustomTextField from "../customComponents/CustomTextField";
 import CustomSelect from "../customComponents/CustomSelect";
 import {
   Box,
-  Button,
   Checkbox,
   IconButton,
   InputAdornment,
@@ -75,7 +74,7 @@ export default function Signup() {
         <Checkbox />
         <CustomTypo fontWeight="500" fontSize="16px" color="#B5B5B5">
           I accept the{" "}
-          <a href="" style={{ color: "#3E7ADE", textDecoration: "none" }}>
+          <a href="https://www.google.com/" style={{ color: "#3E7ADE", textDecoration: "none" }}>
             terms and conditions
           </a>
         </CustomTypo>

@@ -1,8 +1,7 @@
 import React from "react";
-
 import { Box } from "@mui/material";
 import Design from "./Design";
-import Signup from "./Signup";
+import Signup from "../pages/Signup";
 
 function SignupScreen() {
   return (

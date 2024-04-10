@@ -2,7 +2,7 @@ import React from "react";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-const CustomSelect = ({ width, height, margin ,placeholder}) => {
+const CustomSelect = ({ placeholder }) => {
   return (
     <Select
       fullWidth
@@ -12,7 +12,7 @@ const CustomSelect = ({ width, height, margin ,placeholder}) => {
       borderColor="#F0EFFF"
       maxWidth="447px"
       maxHeight="57px"
-      sx={{backgroundColor:"#F0EFFF"}}
+      sx={{ backgroundColor: "#F0EFFF" }}
       fontFamily="Poppins !important"
     >
       <MenuItem value={"Developer"}>Developer</MenuItem>

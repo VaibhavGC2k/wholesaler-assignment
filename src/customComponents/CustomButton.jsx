@@ -9,8 +9,6 @@ export default function CustomButton({
   padding,
   children,
   fontSize,
-  bgColor,
-  color,
   width,
   margin,
   height

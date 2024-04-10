@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import navLogo from "../assets/navLogo.png";
 import CustomTypo from "../customComponents/CustomTypo";
+
 export default function Navbar() {
   return (
     <>

@@ -1,8 +1,7 @@
 import React from "react";
-
 import { Box } from "@mui/material";
 import Design from "./Design";
-import SignIn from "./SignIn";
+import SignIn from "../pages/SignIn";
 
 export default function LoginScreen() {
   return (

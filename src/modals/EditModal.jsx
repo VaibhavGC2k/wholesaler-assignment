@@ -10,7 +10,6 @@ import CustomButton from "../customComponents/CustomButton.jsx";
 import { useState } from "react";
 import {
   validateEmail,
-  validateWholesalerId,
   validateLocId,
 } from "../utils/validate.js";
 import PositionedSnackbar from "../components/Snackbar.jsx";
@@ -33,16 +32,16 @@ export default function EditModal({
   setData: setWholeData,
   data: wholeData,
 }) {
-  
+
   const [emailError, setEmailError] = useState(false);
   const [LocIdError, setLocIdError] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState(false);
   const handleClose = () => setOpenEdit(false);
   const [formData, setFormData] = useState(
-    wholeData.find((obj) => obj.wholesalerId == id)
+    wholeData.find((obj) => obj.wholesalerId === id)
   );
-  const [data, setData] = useState(
-    wholeData.find((obj) => obj.wholesalerId == id)
+  const [data] = useState(
+    wholeData.find((obj) => obj.wholesalerId === id)
   );
 
   const handleChange = (event) => {
@@ -66,11 +65,11 @@ export default function EditModal({
       if (emailError || LocIdError) {
         throw new Error("Validation Error");
       } else {
-       
+
         const index = wholeData.findIndex(
           (item) => item.wholesalerId === formData.wholesalerId
         );
-        
+
         if (index !== -1) {
           wholeData[index] = formData;
         } else {
@@ -84,7 +83,7 @@ export default function EditModal({
       console.log(error.message);
     }
   };
-  
+
   return (
     <>
       <Modal

@@ -11,7 +11,6 @@ import { useState } from "react";
 import {
   validateEmail,
   validateWholesalerId,
-  validateLocId,
 } from "../utils/validate.js";
 
 const style = {
@@ -81,25 +80,14 @@ export default function FilterModal({
       <Modal
         open={openFilter}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <Box
             sx={{
-              marginLeft: "32px",
-              marginTop: "17.82px",
-              marginBottom: "11.66px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              marginLeft: "32px", marginTop: "17.82px", marginBottom: "11.66px", display: "flex", justifyContent: "space-between", alignItems: "center",
             }}
           >
-            <CustomTypo
-              fontFamily="Poppins"
-              fontSize="28.52px"
-              fontWeight="500"
-              color="#000000"
+            <CustomTypo fontFamily="Poppins" fontSize="28.52px" fontWeight="500" color="#000000"
             >
               Filters
             </CustomTypo>
@@ -111,149 +99,75 @@ export default function FilterModal({
                 alignItems: "center",
               }}
             >
-              <CustomButton
-                onClick={handleClearFilter}
-                variant="outlined"
-               
-                padding="11px 12px 11px 12px"
-               
-
+              <CustomButton onClick={handleClearFilter} variant="outlined" padding="11px 12px 11px 12px"
               >
                 Clear Filter
               </CustomButton>
 
               <Button sx={{ marginRight: "40px" }} onClick={handleClose}>
-                <img
-                  src={modalClose}
-                  alt="modal Close"
-                  width="38px"
-                  height="38px"
+                <img src={modalClose} alt="modal Close" width="38px" height="38px"
                 />
               </Button>
             </Box>
           </Box>
           <Divider
             sx={{
-              maxWidth: "833px",
-              color: "#505D68",
-              margin: "0px 15px 14px 15px",
-              borderStyle: "dashed",
+              maxWidth: "833px", color: "#505D68", margin: "0px 15px 14px 15px", borderStyle: "dashed",
             }}
           />
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "flex-start",
-              marginTop: "14px",
-              marginLeft: "28px",
-              columnGap: "27px",
-              rowGap: "23px",
+              display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "flex-start", marginTop: "14px", marginLeft: "28px", columnGap: "27px", rowGap: "23px",
             }}
           >
             <Box sx={{}}>
               {" "}
-              <CustomTypo
-                fontFamily="Poppins"
-                fontWeight="400"
-                fontSize="14px"
-                color="#636363"
+              <CustomTypo fontFamily="Poppins" fontWeight="400" fontSize="14px" color="#636363"
               >
                 First Name
               </CustomTypo>
-              <CustomTextField
-                onChange={handleChange}
-                value={formData.firstName}
-                name="firstName"
-                width="377px"
-                height="48px"
+              <CustomTextField onChange={handleChange} value={formData.firstName} name="firstName" width="377px" height="48px"
               />
             </Box>
             <Box sx={{}}>
               {" "}
-              <CustomTypo
-                fontFamily="Poppins"
-                fontWeight="400"
-                fontSize="14px"
-                color="#636363"
+              <CustomTypo fontFamily="Poppins" fontWeight="400" fontSize="14px" color="#636363"
               >
                 Last Name
               </CustomTypo>
-              <CustomTextField
-                value={formData.lastName}
-                name="lastName"
-                onChange={handleChange}
-                width="377px"
-                height="48px"
+              <CustomTextField value={formData.lastName} name="lastName" onChange={handleChange} width="377px" height="48px"
               />
             </Box>
             <Box sx={{}}>
               {" "}
-              <CustomTypo
-                fontFamily="Poppins"
-                fontWeight="400"
-                fontSize="14px"
-                color="#636363"
+              <CustomTypo fontFamily="Poppins" fontWeight="400" fontSize="14px" color="#636363"
               >
                 Email ID
               </CustomTypo>
-              <CustomTextField
-                value={formData.email}
-                error={emailError}
-                helperText={emailError && "Enter valid Email Id"}
-                name="email"
-                onChange={handleChange}
-                width="377px"
-                height="48px"
+              <CustomTextField value={formData.email} error={emailError} helperText={emailError && "Enter valid Email Id"} name="email" onChange={handleChange} width="377px" height="48px"
               />
             </Box>
             <Box sx={{}}>
               {" "}
-              <CustomTypo
-                fontFamily="Poppins"
-                fontWeight="400"
-                fontSize="14px"
-                color="#636363"
+              <CustomTypo fontFamily="Poppins" fontWeight="400" fontSize="14px" color="#636363"
               >
                 Phone Number
               </CustomTypo>
-              <CustomTextField
-                value={formData.phoneNumber}
-                name="phoneNumber"
-                onChange={handleChange}
-                width="377px"
-                height="48px"
+              <CustomTextField value={formData.phoneNumber} name="phoneNumber" onChange={handleChange} width="377px" height="48px"
               />
             </Box>
             <Box sx={{}}>
               {" "}
-              <CustomTypo
-                fontFamily="Poppins"
-                fontWeight="400"
-                fontSize="14px"
-                color="#636363"
+              <CustomTypo fontFamily="Poppins" fontWeight="400" fontSize="14px" color="#636363"
               >
                 Wholesaler ID
               </CustomTypo>
-              <CustomTextField
-                value={formData.wholesalerId}
-                error={wholesalerIdError}
-                helperText={wholesalerIdError && "Enter valid Wholesaler Id"}
-                name="wholesalerId"
-                onChange={handleChange}
-                width="377px"
-                height="48px"
+              <CustomTextField value={formData.wholesalerId} error={wholesalerIdError} helperText={wholesalerIdError && "Enter valid Wholesaler Id"} name="wholesalerId" onChange={handleChange} width="377px" height="48px"
               />
             </Box>
           </Box>
 
-          <CustomButton
-            onClick={handleSubmit}
-            padding="14px 60px 14px 61px"
-            margin="40px 0px 58px 40px"
-            width="158px"
-            height="46px"
+          <CustomButton onClick={handleSubmit} padding="14px 60px 14px 61px" margin="40px 0px 58px 40px" width="158px" height="46px"
           >
             Continue
           </CustomButton>

@@ -14,6 +14,7 @@ import {
   validateLocId,
 } from "../utils/validate.js";
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -24,6 +25,7 @@ const style = {
   bgcolor: "#FFFFFF",
   borderRadius: "6px",
 };
+
 const InitialFormData = {
   firstName: "",
   lastName: "",
@@ -36,8 +38,7 @@ const InitialFormData = {
 
 export default function AddModal({ open, setOpen, setData, data }) {
   const handleClose = () => setOpen(false);
-
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue] = useState();
   const [snackbarMessage, setSnackbarMessage] = useState(false);
   const [formData, setFormData] = useState(InitialFormData);
   const [emailError, setEmailError] = useState(false);
@@ -50,8 +51,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
       ...formData,
       [name]: value,
     });
-
-    // Validate email
+    
     if (name === "email") {
       const isValidEmail = validateEmail(value);
       setEmailError(!isValidEmail);

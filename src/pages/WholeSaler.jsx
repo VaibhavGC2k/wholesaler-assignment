@@ -1,9 +1,9 @@
 import { Box, Button, Divider, Pagination, Stack } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import CustomTypo from "../customComponents/CustomTypo";
 import CustomButton from "../customComponents/CustomButton";
 import funnel from "../assets/funnel.png";
-import WholesalerTable from "./WholesalerTable";
+import WholesalerTable from "../components/WholesalerTable";
 import AddModal from "../modals/AddModal";
 import { useState } from "react";
 import FilterModal from "../modals/FilterModal";

@@ -1,11 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import CustomTypo from "../customComponents/CustomTypo";
-import modalClose from "../assets/modalClose.svg";
-import { Divider, Grid } from "@mui/material";
-
+import { Divider } from "@mui/material";
 import CustomButton from "../customComponents/CustomButton";
 
 const style = {

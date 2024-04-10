@@ -7,7 +7,7 @@ import CustomTypo from "../customComponents/CustomTypo";
 import { IconButton, ListItemButton } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useState } from "react";
-import WholeSaler from "./WholeSaler";
+import WholeSaler from "../pages/WholeSaler";
 
 const drawerWidth = 282;
 

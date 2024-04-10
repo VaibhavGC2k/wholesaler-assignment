@@ -5,12 +5,12 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CustomTypo from "../customComponents/CustomTypo";
-import DeleteModal from "../Modals/DeleteModal";
+import DeleteModal from "../modals/DeleteModal";
 import { Button } from "@mui/material";
 import editIcon from "../assets/Edit.png";
 import deleteIcon from "../assets/Delete.png";
 import { useState } from "react";
-import EditModal from "../Modals/EditModal";
+import EditModal from "../modals/EditModal";
 import { useEffect } from "react";
 import { useMemo } from "react";
 

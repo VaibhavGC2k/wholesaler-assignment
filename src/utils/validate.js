@@ -17,4 +17,4 @@ export const validateLocId = (locId) => {
     const re = /^[A-Z]{2}\d{6}$/;
     return re.test(locId);
   }
-};
+}

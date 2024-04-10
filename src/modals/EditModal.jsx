@@ -2,11 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import CustomTypo from "../customComponents/CustomTypo";
+import CustomTypo from "../customComponents/CustomTypo.jsx";
 import modalClose from "../assets/modalClose.svg";
 import { Divider, Grid, MenuItem, Select } from "@mui/material";
-import CustomTextField from "../customComponents/CustomTextField";
-import CustomButton from "../customComponents/CustomButton";
+import CustomTextField from "../customComponents/CustomTextField.jsx";
+import CustomButton from "../customComponents/CustomButton.jsx";
 import { useState } from "react";
 import {
   validateEmail,

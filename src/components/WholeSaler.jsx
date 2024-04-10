@@ -4,9 +4,9 @@ import CustomTypo from "../customComponents/CustomTypo";
 import CustomButton from "../customComponents/CustomButton";
 import funnel from "../assets/funnel.png";
 import WholesalerTable from "./WholesalerTable";
-import AddModal from "../Modals/AddModal";
+import AddModal from "../modals/AddModal";
 import { useState } from "react";
-import FilterModal from "../Modals/FilterModal";
+import FilterModal from "../modals/FilterModal";
 import wholesalers from "../data/wholesalers";
 
 export default function WholeSaler() {

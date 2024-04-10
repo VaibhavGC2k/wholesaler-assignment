@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 export default function CustomTextField({
+
   placeholder,
   backgroundColor,
   children,
@@ -24,7 +25,7 @@ export default function CustomTextField({
             width: width ? width : "447px",
             height: height ? height : "62px",
             backgroundColor: "#F0EFFF",
-            margin: margin ? margin : "",
+            margin: margin,
             fontFamily: "Poppins !important",
             placeContent:"Who are you?"
           },

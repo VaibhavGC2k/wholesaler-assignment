@@ -11,9 +11,10 @@ import {
   TextField,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import facebookIcon from "../icons/Facebook.svg";
-import appleIcon from "../icons/apple.svg";
-import googleIcon from "../icons/google.svg";
+import facebookIcon from "../assets/Facebook.svg";
+import appleIcon from "../assets/apple.svg";
+import googleIcon from "../assets/google.svg";
+import CustomButton from "../customComponents/CustomButton";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -79,24 +80,20 @@ export default function Signup() {
           </a>
         </CustomTypo>
       </Box>
-      <Button
+      <CustomButton
         variant="contained"
-        sx={{
-          borderRadius: "5px",
-          backgroundColor: "#4D47C3",
-          minHeight: "59px",
-          textTransform: "capitalize",
-        }}
+        borderRadius="9px"
+        height="59px"
       >
         <CustomTypo
           fontWeight="500"
           fontSize="16px"
-          lineHeight="24px"
+
           color="#FFFFFF"
         >
           Register
         </CustomTypo>
-      </Button>
+      </CustomButton>
       <Box
         sx={{
           display: "flex",

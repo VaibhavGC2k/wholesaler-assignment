@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import CustomTypo from "../customComponents/CustomTypo";
-import modalClose from "../icons/modalClose.svg";
+import modalClose from "../assets/modalClose.svg";
 import { Divider } from "@mui/material";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
@@ -12,7 +12,7 @@ import {
   validateEmail,
   validateWholesalerId,
   validateLocId,
-} from "../validate.js";
+} from "../utils/validate.js";
 
 const style = {
   position: "absolute",
@@ -114,8 +114,10 @@ export default function FilterModal({
               <CustomButton
                 onClick={handleClearFilter}
                 variant="outlined"
-                color="#4D47C3"
-                bgColor="none"
+               
+                padding="11px 12px 11px 12px"
+               
+
               >
                 Clear Filter
               </CustomButton>

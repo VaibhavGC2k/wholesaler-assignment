@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import CustomTypo from "../customComponents/CustomTypo";
-import modalClose from "../icons/modalClose.svg";
+import modalClose from "../assets/modalClose.svg";
 import { Divider, Grid } from "@mui/material";
-import CustomTextField from "../customComponents/CustomTextField";
+
 import CustomButton from "../customComponents/CustomButton";
-import { DragHandleRounded } from "@mui/icons-material";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -88,11 +88,10 @@ export default function DeleteModal({
           >
             <CustomButton
               onClick={() => setOpenDelete(false)}
+              variant="outlined"
               maxWidth="160px"
               maxHeight="44px"
               padding="13px 54px 13px 54px"
-              bgColor="#E6E6E6"
-              color="#4D47C3"
             >
               Cancel
             </CustomButton>

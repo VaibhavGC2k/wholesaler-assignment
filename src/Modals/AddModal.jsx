@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import modalClose from "../icons/modalClose.svg";
+import modalClose from "../assets/modalClose.svg";
 import CustomTypo from "../customComponents/CustomTypo";
 import { Modal, Box, Button, Divider } from "@mui/material";
 import PositionedSnackbar from "../components/Snackbar";
@@ -12,7 +12,7 @@ import {
   validateEmail,
   validateWholesalerId,
   validateLocId,
-} from "../validate.js";
+} from "../utils/validate.js";
 
 const style = {
   position: "absolute",

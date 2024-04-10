@@ -7,8 +7,8 @@ import TableRow from "@mui/material/TableRow";
 import CustomTypo from "../customComponents/CustomTypo";
 import DeleteModal from "../Modals/DeleteModal";
 import { Button } from "@mui/material";
-import editIcon from "../icons/Edit.png";
-import deleteIcon from "../icons/Delete.png";
+import editIcon from "../assets/Edit.png";
+import deleteIcon from "../assets/Delete.png";
 import { useState } from "react";
 import EditModal from "../Modals/EditModal";
 import { useEffect } from "react";
@@ -28,7 +28,7 @@ export default function WholesalerTable({
   useEffect(() => {
     const xyz = data.filter((dataObj) => {
       return filteredData.some((filteredObj) =>
-        compareObjects(filteredObj, dataObj)
+        compareObjects(dataObj, filteredObj)
       );
     });
     setmatchedObjects(xyz);
@@ -40,11 +40,11 @@ export default function WholesalerTable({
 
   const compareObjects = (obj1, obj2) => {
     return (
-      obj1.firstName === obj2.firstName ||
-      obj1.lastName === obj2.lastName ||
-      obj1.email === obj2.email ||
-      obj1.phoneNumber === obj2.phoneNumber ||
-      obj1.wholesalerId === obj2.wholesalerId
+      obj1.firstName.includes(obj2.firstName) ||
+      obj1.lastName.includes(obj2.lastName) ||
+      obj1.email.includes(obj2.email) ||
+      obj1.phoneNumber.includes(obj2.phoneNumber) ||
+      obj1.wholesalerId.includes(obj2.wholesalerId)
     );
   };
 
@@ -135,167 +135,167 @@ export default function WholesalerTable({
         >
           {matchedObjects.length
             ? matchedObjects
-                .slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6)
-                .map((row) => (
-                  <>
-                    <TableRow
-                      key={row.wholesalerId}
-                      sx={{
-                        backgroundColor: "#F0EFFF",
-                        borderBottom: "21px solid #FFFFFF",
-                      }}
-                    >
-                      <TableCell>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="500"
-                          fontSize="15px"
-                          color="#151515"
-                        >
-                          {row.firstName}
-                        </CustomTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="500"
-                          fontSize="15px"
-                          color="#151515"
-                        >
-                          {row.lastName}
-                        </CustomTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="500"
-                          fontSize="15px"
-                          color="#151515"
-                        >
-                          {row.email}
-                        </CustomTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="500"
-                          fontSize="15px"
-                          color="#151515"
-                        >
-                          {row.phoneNumber}
-                        </CustomTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CustomTypo
-                          fontFamily="Poppins"
-                          fontWeight="500"
-                          fontSize="15px"
-                          color="#151515"
-                        >
-                          {row.wholesalerId}
-                        </CustomTypo>
-                      </TableCell>
-                      <TableCell sx={{ padding: "0px" }}>
-                        <Button
-                          onClick={() => {
-                            handleDelete(row.wholesalerId);
-                            setOpenEdit(true);
-                          }}
-                        >
-                          <img src={editIcon} alt="edit" />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            handleDelete(row.wholesalerId);
-                            setOpenDelete(true);
-                          }}
-                        >
-                          <img src={deleteIcon} alt="delete" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                   
-                  </>
-                ))
-            : data.slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6).map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{
-                    backgroundColor: "#F0EFFF",
-                    borderBottom: "21px solid #FFFFFF",
-                  }}
-                >
-                  <TableCell>
-                    <CustomTypo
-                      fontFamily="Poppins"
-                      fontWeight="500"
-                      fontSize="15px"
-                      color="#151515"
-                    >
-                      {row.firstName}
-                    </CustomTypo>
-                  </TableCell>
-                  <TableCell>
-                    <CustomTypo
-                      fontFamily="Poppins"
-                      fontWeight="500"
-                      fontSize="15px"
-                      color="#151515"
-                    >
-                      {row.lastName}
-                    </CustomTypo>
-                  </TableCell>
-                  <TableCell>
-                    <CustomTypo
-                      fontFamily="Poppins"
-                      fontWeight="500"
-                      fontSize="15px"
-                      color="#151515"
-                    >
-                      {row.email}
-                    </CustomTypo>
-                  </TableCell>
-                  <TableCell>
-                    <CustomTypo
-                      fontFamily="Poppins"
-                      fontWeight="500"
-                      fontSize="15px"
-                      color="#151515"
-                    >
-                      {row.phoneNumber}
-                    </CustomTypo>
-                  </TableCell>
-                  <TableCell>
-                    <CustomTypo
-                      fontFamily="Poppins"
-                      fontWeight="500"
-                      fontSize="15px"
-                      color="#151515"
-                    >
-                      {row.wholesalerId}
-                    </CustomTypo>
-                  </TableCell>
-                  <TableCell sx={{ padding: "0px" }}>
-                    <Button
-                      onClick={() => {
-                        handleDelete(row.wholesalerId);
+              .slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6)
+              .map((row) => (
+                <>
+                  <TableRow
+                    key={row.wholesalerId}
+                    sx={{
+                      backgroundColor: "#F0EFFF",
+                      borderBottom: "21px solid #FFFFFF",
+                    }}
+                  >
+                    <TableCell>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="500"
+                        fontSize="15px"
+                        color="#151515"
+                      >
+                        {row.firstName}
+                      </CustomTypo>
+                    </TableCell>
+                    <TableCell>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="500"
+                        fontSize="15px"
+                        color="#151515"
+                      >
+                        {row.lastName}
+                      </CustomTypo>
+                    </TableCell>
+                    <TableCell>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="500"
+                        fontSize="15px"
+                        color="#151515"
+                      >
+                        {row.email}
+                      </CustomTypo>
+                    </TableCell>
+                    <TableCell>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="500"
+                        fontSize="15px"
+                        color="#151515"
+                      >
+                        {row.phoneNumber}
+                      </CustomTypo>
+                    </TableCell>
+                    <TableCell>
+                      <CustomTypo
+                        fontFamily="Poppins"
+                        fontWeight="500"
+                        fontSize="15px"
+                        color="#151515"
+                      >
+                        {row.wholesalerId}
+                      </CustomTypo>
+                    </TableCell>
+                    <TableCell sx={{ padding: "0px" }}>
+                      <Button
+                        onClick={() => {
+                          handleDelete(row.wholesalerId);
+                          setOpenEdit(true);
+                        }}
+                      >
+                        <img src={editIcon} alt="edit" />
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          handleDelete(row.wholesalerId);
+                          setOpenDelete(true);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
 
-                        setOpenEdit(true);
-                      }}
-                    >
-                      <img src={editIcon} alt="edit" />
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        handleDelete(row.wholesalerId);
-                        setOpenDelete(true);
-                      }}
-                    >
-                      <img src={deleteIcon} alt="delete" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+                </>
+              ))
+            : data.slice((pageNo - 1) * 6, (pageNo - 1) * 6 + 6).map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{
+                  backgroundColor: "#F0EFFF",
+                  borderBottom: "21px solid #FFFFFF",
+                }}
+              >
+                <TableCell>
+                  <CustomTypo
+                    fontFamily="Poppins"
+                    fontWeight="500"
+                    fontSize="15px"
+                    color="#151515"
+                  >
+                    {row.firstName}
+                  </CustomTypo>
+                </TableCell>
+                <TableCell>
+                  <CustomTypo
+                    fontFamily="Poppins"
+                    fontWeight="500"
+                    fontSize="15px"
+                    color="#151515"
+                  >
+                    {row.lastName}
+                  </CustomTypo>
+                </TableCell>
+                <TableCell>
+                  <CustomTypo
+                    fontFamily="Poppins"
+                    fontWeight="500"
+                    fontSize="15px"
+                    color="#151515"
+                  >
+                    {row.email}
+                  </CustomTypo>
+                </TableCell>
+                <TableCell>
+                  <CustomTypo
+                    fontFamily="Poppins"
+                    fontWeight="500"
+                    fontSize="15px"
+                    color="#151515"
+                  >
+                    {row.phoneNumber}
+                  </CustomTypo>
+                </TableCell>
+                <TableCell>
+                  <CustomTypo
+                    fontFamily="Poppins"
+                    fontWeight="500"
+                    fontSize="15px"
+                    color="#151515"
+                  >
+                    {row.wholesalerId}
+                  </CustomTypo>
+                </TableCell>
+                <TableCell sx={{ padding: "0px" }}>
+                  <Button
+                    onClick={() => {
+                      handleDelete(row.wholesalerId);
+
+                      setOpenEdit(true);
+                    }}
+                  >
+                    <img src={editIcon} alt="edit" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleDelete(row.wholesalerId);
+                      setOpenDelete(true);
+                    }}
+                  >
+                    <img src={deleteIcon} alt="delete" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
       {openEdit && (

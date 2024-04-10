@@ -5,6 +5,7 @@ import CustomTypo from "./CustomTypo";
 export default function CustomButton({
   variant,
   onClick,
+  borderRadius,
   padding,
   children,
   fontSize,
@@ -18,20 +19,20 @@ export default function CustomButton({
     <>
       <Button
         onClick={onClick}
-        variant={variant}
+        variant="outlined"
         sx={{
-          backgroundColor: bgColor ? bgColor : "#4D47C3",
-          borderRadius: "6px",
+          backgroundColor: variant !== "outlined" ? "#4D47C3" : "",
+          borderRadius: borderRadius ? borderRadius : "6px",
           padding: padding ? padding : "9px 25px 9px 25px",
           maxWidth: width,
-          fontSize: { fontSize },
+          fontSize: fontSize,
           maxHeight: height ? height : "59px",
           gap: "10px",
-          color: color ? color : "#FFFFFF",
+          color: variant !== "outlined" ? "#FFFFFF" : "#4D47C3",
           margin: margin ? margin : "0px",
           textTransform: "capitalize",
-          '&:hover': { backgroundColor: '#4D47C3' },
-          '&:active': { backgroundColor: '#4D47C3' }
+          '&:hover': { backgroundColor: variant === "outlined" ? '' : '#4D47C3' },
+          '&:active': { backgroundColor: variant === "outlined" ? '' : '#4D47C3' },
         }}
       >
         <CustomTypo fontFamily="Montserrat" fontSize="15px" fontWeight="400">

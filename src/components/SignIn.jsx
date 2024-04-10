@@ -1,14 +1,14 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
 import CustomTypo from "../customComponents/CustomTypo";
-import facebookIcon from "../icons/Facebook.svg";
-import appleIcon from "../icons/apple.svg";
-import googleIcon from "../icons/google.svg";
+import facebookIcon from "../assets/Facebook.svg";
+import appleIcon from "../assets/apple.svg";
+import googleIcon from "../assets/google.svg";
 import CustomTextField from "../customComponents/CustomTextField";
 import CustomButton from "../customComponents/CustomButton";
 import { Checkbox, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Link, Navigate } from "react-router-dom";
 export default function SignIn() {
@@ -29,7 +29,7 @@ export default function SignIn() {
     },
   };
 
-  const handleClick=()=>{
+  const handleClick = () => {
     navigate('/wholesaler')
   }
 
@@ -79,25 +79,21 @@ export default function SignIn() {
             Forgot password ?
           </CustomTypo>
 
-          <Button
+          <CustomButton
             variant="contained"
             onClick={handleClick}
-            sx={{
-              borderRadius: "5px",
-              backgroundColor: "#4D47C3",
-              minHeight: "59px",
-              textTransform: "capitalize",
-            }}
+            borderRadius = "9px"
+            height="59px"
           >
             <CustomTypo
               fontWeight="500"
               fontSize="16px"
-              lineHeight="24px"
+             
               color="#FFFFFF"
             >
               Login
             </CustomTypo>
-          </Button>
+          </CustomButton>
           <Box
             sx={{
               width: "100%",

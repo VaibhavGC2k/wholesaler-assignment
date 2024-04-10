@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
-import Squadra from "../icons/Logo.svg";
-import Component1 from "../icons/Component1.svg";
+import Squadra from "../assets/Logo.svg";
+import Component1 from "../assets/Component1.svg";
 import { Link } from "react-router-dom";
 export default function HomePage() {
   return (

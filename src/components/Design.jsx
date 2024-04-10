@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import React from "react";
-import SquadraIcon from "../icons/SquadraLogo.svg";
+import SquadraIcon from "../assets/SquadraLogo.svg";
 import CustomTypo from "../customComponents/CustomTypo";
-import manStanding from "../icons/manStanding.svg";
+import manStanding from "../assets/manStanding.svg";
 import { Link } from "react-router-dom";
 export default function Design({ text1, text2, text3, text4, link }) {
   return (

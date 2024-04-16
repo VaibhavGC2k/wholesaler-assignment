@@ -9,9 +9,15 @@ import CustomButton from "../customComponents/CustomButton";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
+import { validateEmail, validatePassword } from "../utils/validate";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+
   const navigate = useNavigate();
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -28,7 +34,20 @@ export default function SignIn() {
     },
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "email") {
+      const isValidEmail = validateEmail(value);
+      
+      setEmailError(!isValidEmail);
+    } else if (name === "password") {
+      const isValidatePassword = validatePassword(value);
+      setPasswordError(isValidatePassword);
+    }
+  }
+
   const handleClick = () => {
+    if()
     navigate('/wholesaler')
   }
 
@@ -58,9 +77,16 @@ export default function SignIn() {
           >
             Sign in
           </CustomTypo>
-          <CustomTextField placeholder="Enter email and user name" />
+          <CustomTextField placeholder="Enter email and user name" name="email"
+            error={emailError}
+            helperText={emailError && "Enter valid Password"}
+            onChange={handleChange} />
           <TextField
             placeholder="Password"
+            name="password"
+            onChange={handleChange}
+            error={passwordError}
+            helperText={passwordError && "Enter valid Password"}
             type={showPassword ? "text" : "password"}
             InputProps={{
               ...commonInputProps,

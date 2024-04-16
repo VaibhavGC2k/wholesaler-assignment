@@ -18,3 +18,11 @@ export const validateLocId = (locId) => {
     return re.test(locId);
   }
 }
+
+export const validatePassword =(password)=>{
+  if(password.length<10){
+    return true
+  }else{
+    return false
+  }
+}

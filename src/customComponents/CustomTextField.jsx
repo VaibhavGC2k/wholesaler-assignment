@@ -2,9 +2,13 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 export default function CustomTextField({
+  onChange,
   placeholder,
   backgroundColor,
+  name,
   children,
+  error,
+  helperText,
   width,
   height,
   margin,
@@ -14,9 +18,13 @@ export default function CustomTextField({
     <>
       <TextField
         placeholder={placeholder}
+        error={error}
+        helperText={helperText}
         InputLabelProps={{
           shrink: true,
         }}
+        name={name}
+        onChange={onChange}
         InputProps={{
           style: {
             borderRadius: "6px",
@@ -26,7 +34,7 @@ export default function CustomTextField({
             backgroundColor: "#F0EFFF",
             margin: margin,
             fontFamily: "Poppins !important",
-            placeContent:"Who are you?"
+            placeContent: "Who are you?"
           },
         }}
         {...rest}

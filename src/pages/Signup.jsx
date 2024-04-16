@@ -14,9 +14,11 @@ import facebookIcon from "../assets/Facebook.svg";
 import appleIcon from "../assets/apple.svg";
 import googleIcon from "../assets/google.svg";
 import CustomButton from "../customComponents/CustomButton";
+import { validateEmail } from "../utils/validate";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);

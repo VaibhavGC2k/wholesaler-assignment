@@ -28,6 +28,7 @@ export default function WholeSaler() {
   function handleDataFromChild(data) {
     setDataFromChild(data);
   }
+  console.log(data.length, dataFromChild.length, "hhkjenferjkn")
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100vh" }}>

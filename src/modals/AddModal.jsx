@@ -51,7 +51,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
       ...formData,
       [name]: value,
     });
-    
+
     if (name === "email") {
       const isValidEmail = validateEmail(value);
       setEmailError(!isValidEmail);
@@ -159,6 +159,10 @@ export default function AddModal({ open, setOpen, setData, data }) {
                         {index === 4 && "Wholesaler ID"}
                       </CustomTypo>
                       <TextField
+                        type={
+                          (index === 3 && "number")
+                        }
+
                         required="true"
                         name={
                           (index === 0 && "firstName") ||
@@ -179,7 +183,9 @@ export default function AddModal({ open, setOpen, setData, data }) {
                             wholesalerIdError &&
                             "Enter valid Wholesaler Id")
                         }
+
                         onChange={handleChange}
+                        
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -191,7 +197,7 @@ export default function AddModal({ open, setOpen, setData, data }) {
                             height: "62px",
                             backgroundColor: "#F0EFFF",
                             fontFamily: "Poppins !important",
-                          },
+                          }
                         }}
                       />
                     </>
